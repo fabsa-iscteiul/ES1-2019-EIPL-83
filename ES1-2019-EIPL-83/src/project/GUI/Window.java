@@ -24,6 +24,7 @@ public class Window {
 		if (frame != null)
 			frame.dispose();
 		frame = new JFrame("ES PROJECT");
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		JButton longMethodButton = new JButton("Long Method");
@@ -38,12 +39,25 @@ public class Window {
 		frame = new JFrame("Long Method");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(600, 400));
-		frame.setLayout(new GridLayout(2, 2));
+		frame.setLayout(new GridLayout(5, 2));
 		frame.setLocationRelativeTo(null);
-		JLabel label = new JLabel("How many lines to consider?");
+		JLabel label = new JLabel("LOC?");
 		frame.add(label);
 		JTextField nrLines = new JTextField();
 		frame.add(nrLines);
+		JLabel label1 = new JLabel("CYCLO?");
+		frame.add(label1);
+		JTextField cycleComplexity = new JTextField();
+		frame.add(cycleComplexity);
+		JLabel label2 = new JLabel("ATFD?");
+		frame.add(label2);
+		JTextField atfd = new JTextField();
+		frame.add(atfd);
+		JLabel label3 = new JLabel("LAA?");
+		frame.add(label3);
+		JTextField laa = new JTextField();
+		frame.add(laa);
+
 		JButton calculateButton = new JButton("Calculate");
 		calculateButton.addActionListener(new ActionListener() {
 			@Override
