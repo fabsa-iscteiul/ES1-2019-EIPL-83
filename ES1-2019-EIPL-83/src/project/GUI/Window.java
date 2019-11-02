@@ -29,7 +29,7 @@ public class Window {
 	}
 
 	/**
-	 * This method sets up the main Frame, where the User is presented with all
+	 * This method sets up the main Frame, where the User is presented with *
 	 * the functionalities of the application
 	 */
 	private void addContent() {
