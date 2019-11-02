@@ -17,7 +17,9 @@ public class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (type.equals("longMethod")) {
 			window.createLongMethodWindow();
-		} else if (type.equals("")) {
+		} else if (type.equals("feature_envy")) {
+			window.createFeatureEnvy();
+		} else if (type.equals("open_excel")) {
 
 		}
 	}
