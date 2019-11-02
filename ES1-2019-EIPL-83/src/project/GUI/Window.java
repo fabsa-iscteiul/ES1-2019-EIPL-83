@@ -1,7 +1,6 @@
 package project.GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * This class is responsible for setting up the Graphical User Interface (GUI)
+ * for each functionality of the application
+ * 
+ * @author ES1_2019_LEIPL_83
+ */
 public class Window {
 	private JFrame frame;
 	private int loc = 80, cyclo = 10, atfd = 4; // DEFAULT VALUES
@@ -23,6 +28,10 @@ public class Window {
 
 	}
 
+	/**
+	 * This method sets up the main Frame, where the User is presented with the
+	 * various functionalities of the application
+	 */
 	private void addContent() {
 		if (frame != null)
 			frame.dispose();
@@ -52,6 +61,10 @@ public class Window {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * This method sets up the frame where the User will have access to the Long
+	 * Method
+	 */
 	public void createLongMethodWindow() {
 		frame.dispose();
 		setupFrame("Long Method", 4, 2);
@@ -74,10 +87,12 @@ public class Window {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int nrLines = Integer.parseInt(locThreshold.getText());
-					// if it passes through this it means the user set a valid value for loc
+					// if it passes through this it means the user set a valid
+					// value for loc
 					loc = nrLines;
 					int cycloUpdate = Integer.parseInt(cycleComplexity.getText());
-					// if it passes through this it means the user set a valid value for cyclo
+					// if it passes through this it means the user set a valid
+					// value for cyclo
 					cyclo = cycloUpdate;
 				} catch (Exception exception) {
 				}
@@ -96,6 +111,10 @@ public class Window {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * This method sets up the frame where the User will have access to the
+	 * Feature Envy
+	 */
 	public void createFeatureEnvy() {
 		frame.dispose();
 		setupFrame("Feature Envy", 4, 2);
@@ -132,11 +151,22 @@ public class Window {
 		frame.setVisible(true);
 	}
 
-	private void setupFrame(String title, int rows, int colums) {
+	/**
+	 * This method sets up the basic elements of any frame. Also it builds the
+	 * Grid Layout according to the number of columns and rows desired
+	 * 
+	 * @param title
+	 *            A String that will be the title of the frame
+	 * @param rows
+	 *            The number of rows wanted
+	 * @param columns
+	 *            The number of columns wanted
+	 */
+	private void setupFrame(String title, int rows, int columns) {
 		frame = new JFrame(title);
-		frame.setLayout(new GridLayout(rows, colums));
+		frame.setLayout(new GridLayout(rows, columns));
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setSize(new Dimension(1600, 1000));
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setLocationRelativeTo(null);
 	}
 
@@ -172,7 +202,8 @@ public class Window {
 		this.laa = laa;
 	}
 
-	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER ISTO
+	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
+												// ISTO
 		@SuppressWarnings("unused")
 		Window w = new Window();
 	}
