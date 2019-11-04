@@ -2,21 +2,23 @@ package project.GUI;
 
 public class Method {
 
-	private double id;
+	private int id;
+	private String inPackage;
 	private String inClass;
 	private String methodName;
-	private double LOC;
-	private double CYCLO;
-	private double ATFD;
-	private double LAA;
+	private int LOC;
+	private int CYCLO;
+	private int ATFD;
+	private float LAA;
 	private boolean is_long_method;
 	private boolean iPlasma;
 	private boolean PMD;
 	private boolean is_feature_envy;
 
-	public Method(double id, String inClass, String methodName, double LOC, double CYCLO, double ATFD, double LAA,
-			boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
+	public Method(int id, String inPackage, String inClass, String methodName, int LOC, int CYCLO, int ATFD,
+			float LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
 		this.id = id;
+		this.inPackage = inPackage;
 		this.inClass = inClass;
 		this.methodName = methodName;
 		this.LOC = LOC;
