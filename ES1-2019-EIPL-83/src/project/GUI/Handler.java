@@ -15,25 +15,39 @@ public class Handler {
 		try {
 			String folderPath = System.getProperty("user.dir");
 			String filePath = folderPath + "//src/DataEs1.csv";
-			// File file = new File(filePath);
 			BufferedReader br = new BufferedReader(new FileReader(filePath));
 			String line = br.readLine();
+			line = br.readLine();
 			while (line != null) {
 				String[] method = line.split(",");
-				Method methodObj = new Method(Integer.parseInt(method[0]), method[1], method[2], method[3],
-						Integer.parseInt(method[4]), Integer.parseInt(method[5]), Integer.parseInt(method[6]),
-						Float.parseFloat(method[7]), Boolean.parseBoolean(method[8]), Boolean.parseBoolean(method[9]),
-						Boolean.parseBoolean(method[10]), Boolean.parseBoolean(method[11]));
-				methods.add(methodObj);
+				vectorToMethod(method);
 				line = br.readLine();
 			}
 			br.close();
 			for (Method method : methods) {
-				System.out.println(method);
+				System.out.println(method.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void vectorToMethod(String[] vMethod) {
+		int id = Integer.parseInt(vMethod[0]);
+		String inPackage = vMethod[1];
+		String inClass = vMethod[2];
+		String methodName = vMethod[3];
+		int LOC = Integer.parseInt(vMethod[4]);
+		int CYCLO = Integer.parseInt(vMethod[5]);
+		int ATFD = Integer.parseInt(vMethod[6]);
+		float LAA = Float.parseFloat(vMethod[7]);
+		boolean is_long_method = Boolean.parseBoolean(vMethod[8]);
+		boolean iPlasma = Boolean.parseBoolean(vMethod[9]);
+		boolean PMD = Boolean.parseBoolean(vMethod[10]);
+		boolean is_feature_envy = Boolean.parseBoolean(vMethod[11]);
+		Method method = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma,
+				PMD, is_feature_envy);
+		methods.add(method);
 	}
 
 	public static void main(String[] args) {

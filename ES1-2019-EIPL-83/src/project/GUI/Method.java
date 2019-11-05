@@ -15,8 +15,8 @@ public class Method {
 	private boolean PMD;
 	private boolean is_feature_envy;
 
-	public Method(int id, String inPackage, String inClass, String methodName, int LOC, int CYCLO, int ATFD,
-			float LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
+	public Method(int id, String inPackage, String inClass, String methodName, int LOC, int CYCLO, int ATFD, float LAA,
+			boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
 		this.id = id;
 		this.inPackage = inPackage;
 		this.inClass = inClass;
@@ -46,4 +46,13 @@ public class Method {
 			return false;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Method [id=" + id + ", inPackage=" + inPackage + ", inClass=" + inClass + ", methodName=" + methodName
+				+ ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD + ", LAA=" + LAA + ", is_long_method="
+				+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + ", is_feature_envy=" + is_feature_envy
+				+ "]";
+	}
+
 }
