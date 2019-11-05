@@ -4,6 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+ * This class will have the main method and will give the GUI access to the
+ * Method objects, which will generate at the star of the application
+ * 
+ * @author ES1_2019_LEIPL_83
+ *
+ */
 public class Handler {
 
 	private ArrayList<Method> methods = new ArrayList<Method>();
