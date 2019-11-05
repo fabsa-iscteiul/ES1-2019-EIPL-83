@@ -29,8 +29,8 @@ public class Window {
 	}
 
 	/**
-	 * This method sets up the main Frame, where the User is presented with all
-	 * the functionalities of the application
+	 * This method sets up the main Frame, where the User is presented with all the
+	 * functionalities of the application
 	 */
 	private void addContent() {
 		if (frame != null)
@@ -112,8 +112,8 @@ public class Window {
 	}
 
 	/**
-	 * This method sets up the frame where the User will have access to the
-	 * Feature Envy
+	 * This method sets up the frame where the User will have access to the Feature
+	 * Envy
 	 */
 	public void createFeatureEnvy() {
 		frame.dispose();
@@ -152,15 +152,12 @@ public class Window {
 	}
 
 	/**
-	 * This method sets up the basic elements of any frame. Also it builds the
-	 * Grid Layout according to the number of columns and rows desired
+	 * This method sets up the basic elements of any frame. Also it builds the Grid
+	 * Layout according to the number of columns and rows desired
 	 * 
-	 * @param title
-	 *            A String that will be the title of the frame
-	 * @param rows
-	 *            The number of rows wanted
-	 * @param columns
-	 *            The number of columns wanted
+	 * @param title   A String that will be the title of the frame
+	 * @param rows    The number of rows wanted
+	 * @param columns The number of columns wanted
 	 */
 	private void setupFrame(String title, int rows, int columns) {
 		frame = new JFrame(title);

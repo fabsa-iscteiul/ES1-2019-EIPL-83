@@ -15,8 +15,8 @@ public class Method {
 	private boolean PMD;
 	private boolean is_feature_envy;
 
-	public Method(int id, String inPackage, String inClass, String methodName, int LOC, int CYCLO, int ATFD,
-			float LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
+	public Method(int id, String inPackage, String inClass, String methodName, int LOC, int CYCLO, int ATFD, float LAA,
+			boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
 		this.id = id;
 		this.inPackage = inPackage;
 		this.inClass = inClass;
