@@ -152,7 +152,7 @@ public class Window {
 	}
 
 	/**
-	 * This method sets up the basic elements of any frame. Also it builds the Grid
+	 * This method sets up the basic elements of any frame. It also builds the Grid
 	 * Layout according to the number of columns and rows desired
 	 * 
 	 * @param title   A String that will be the title of the frame
@@ -199,7 +199,7 @@ public class Window {
 		this.laa = laa;
 	}
 
-	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
+	public static void main(String[] args) { // Sï¿½ PARA TESTAR DEPOIS REMOVER
 												// ISTO
 		@SuppressWarnings("unused")
 		Window w = new Window();
