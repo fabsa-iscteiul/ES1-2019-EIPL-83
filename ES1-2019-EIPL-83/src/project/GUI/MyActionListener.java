@@ -26,11 +26,11 @@ public class MyActionListener implements ActionListener {
 			window.createFeatureEnvy();
 		} else if (type.equals("open_excel")) {
 
-			JFileChooser filechooser = new JFileChooser("Importar ficheiros");
-			int choosenVal = filechooser.showOpenDialog(null);
+			JFileChooser option = new JFileChooser("Importar ficheiros");
+			int choosenVal = option.showOpenDialog(null);
 			if (choosenVal == JFileChooser.APPROVE_OPTION) {
 
-				File file = filechooser.getSelectedFile();
+				File file = option.getSelectedFile();
 				File ficheiro_excel = new File(file.toString());
 				try {
 					Desktop.getDesktop().open(ficheiro_excel);
