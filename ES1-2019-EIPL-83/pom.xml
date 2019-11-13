@@ -30,5 +30,25 @@
   		<artifactId>poi</artifactId>
   		<version>4.1.1</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.apache.xmlbeans</groupId>
+  		<artifactId>xmlbeans</artifactId>
+  		<version>3.1.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>dom4j</groupId>
+  		<artifactId>dom4j</artifactId>
+  		<version>1.6.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.poi</groupId>
+  		<artifactId>poi-ooxml-schemas</artifactId>
+  		<version>4.1.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.poi</groupId>
+  		<artifactId>poi-ooxml</artifactId>
+  		<version>4.1.1</version>
+  	</dependency>
   </dependencies>
 </project>
