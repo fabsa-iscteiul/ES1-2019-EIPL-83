@@ -1,10 +1,10 @@
 package project.GUI;
 
-import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 
@@ -31,15 +31,16 @@ public class MyActionListener implements ActionListener {
 			if (choosenVal == JFileChooser.APPROVE_OPTION) {
 
 				File file = option.getSelectedFile();
-				File ficheiro_excel = new File(file.toString());
+				String pathFileExcel = file.toPath().toString();
+				ReadExcel re = new ReadExcel(pathFileExcel);
 				try {
-					Desktop.getDesktop().open(ficheiro_excel);
+					re.readExel();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
 			}
+		}
 	}
-
-} }
+}
