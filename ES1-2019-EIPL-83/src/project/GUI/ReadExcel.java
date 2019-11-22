@@ -50,6 +50,7 @@ public class ReadExcel {
 		for (int i = 0; i < rows.length; i++) {
 			System.out.println(rows[i]);
 			vectorToMethod(rows[i].split(";"));
+			//checkar
 		}
 	}
 
