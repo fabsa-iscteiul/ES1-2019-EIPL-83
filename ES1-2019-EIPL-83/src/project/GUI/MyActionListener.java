@@ -42,8 +42,9 @@ public class MyActionListener implements ActionListener {
 
 				re.printMethods();
 			}
-			
-			
+
+		} else if (type.equals("newRule")) {
+			window.create_new_rules_user();
 		}
 	}
 }
