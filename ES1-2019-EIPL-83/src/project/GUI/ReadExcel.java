@@ -48,10 +48,18 @@ public class ReadExcel {
 		String[] rows = excelContent.split("\n");
 
 		for (int i = 0; i < rows.length; i++) {
-			System.out.println(rows[i]);
+			//System.out.println(rows[i]);
 			vectorToMethod(rows[i].split(";"));
 			//checkar
 		}
+	}
+
+	public ArrayList<Method> getMethods() {
+		return methods;
+	}
+
+	public void setMethods(ArrayList<Method> methods) {
+		this.methods = methods;
 	}
 
 	public void vectorToMethod(String[] vMethod) {
@@ -71,6 +79,7 @@ public class ReadExcel {
 		Method method = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma,
 				PMD, is_feature_envy);
 		methods.add(method);
+		
 	}
 
 

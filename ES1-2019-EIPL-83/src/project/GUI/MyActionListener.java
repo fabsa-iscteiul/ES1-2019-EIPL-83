@@ -40,7 +40,10 @@ public class MyActionListener implements ActionListener {
 					e1.printStackTrace();
 				}
 
+				re.printMethods();
 			}
+			
+			
 		}
 	}
 }

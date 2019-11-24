@@ -15,8 +15,8 @@ public class Method {
 	private boolean PMD;
 	private boolean is_feature_envy;
 
-	public Method(double id, String inPackage, String inClass, String methodName, double LOC, double CYCLO, double ATFD, float LAA,
-			boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
+	public Method(double id, String inPackage, String inClass, String methodName, double LOC, double CYCLO, double ATFD,
+			float LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
 		this.id = id;
 		this.inPackage = inPackage;
 		this.inClass = inClass;
@@ -29,6 +29,58 @@ public class Method {
 		this.iPlasma = iPlasma;
 		this.PMD = PMD;
 		this.is_feature_envy = is_feature_envy;
+	}
+
+	public boolean isiPlasma() {
+		return iPlasma;
+	}
+
+	public void setiPlasma(boolean iPlasma) {
+		this.iPlasma = iPlasma;
+	}
+
+	public boolean isPMD() {
+		return PMD;
+	}
+
+	public void setPMD(boolean pMD) {
+		PMD = pMD;
+	}
+
+	public String getInPackage() {
+		return inPackage;
+	}
+
+	public String getInClass() {
+		return inClass;
+	}
+
+	public String getMethodName() {
+		return methodName;
+	}
+
+	public double getLOC() {
+		return LOC;
+	}
+
+	public double getCYCLO() {
+		return CYCLO;
+	}
+
+	public double getATFD() {
+		return ATFD;
+	}
+
+	public float getLAA() {
+		return LAA;
+	}
+
+	public boolean isIs_long_method() {
+		return is_long_method;
+	}
+
+	public boolean isIs_feature_envy() {
+		return is_feature_envy;
 	}
 
 	public boolean defaultLongMethod() {
@@ -53,6 +105,14 @@ public class Method {
 				+ ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD + ", LAA=" + LAA + ", is_long_method="
 				+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + ", is_feature_envy=" + is_feature_envy
 				+ "]";
+	}
+
+	public double getId() {
+		return id;
+	}
+
+	public void setId(double id) {
+		this.id = id;
 	}
 
 }
