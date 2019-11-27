@@ -15,7 +15,8 @@ public class ReadExcel {
 	public ReadExcel(String path) {
 		this.pathExcel = path;
 	}
-
+	
+	
 	public void readExel() throws IOException {
 		XSSFWorkbook xwb = new XSSFWorkbook(this.pathExcel);
 		XSSFSheet sheet = xwb.getSheetAt(0);

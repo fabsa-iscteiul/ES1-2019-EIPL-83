@@ -11,10 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -32,8 +32,11 @@ public class Window {
 	private String[] operators_math = { "<=", "<", ">", ">=" };
 	private JPanel painel2;
 	private GridBagConstraints grid = new GridBagConstraints();
-
+	private JList<String> methodList;
+	private Handler handler;
+	
 	public Window() {
+		this.handler = new Handler();
 		addContent();
 
 	}
@@ -46,6 +49,7 @@ public class Window {
 		if (frame != null)
 			frame.dispose();
 		setupFrame("Project", 1, 1);
+		methodList = new JList<String>(handler.methodsName());
 		frame.setLayout(new BorderLayout());
 		JPanel displayPanel = new JPanel(); // FLOWLAYOUT IS THE DEFAULT
 		JPanel buttonPanel = new JPanel();
@@ -69,7 +73,7 @@ public class Window {
 		JButton newRule = new JButton("New Rule");
 		newRule.addActionListener(new MyActionListener("newRule", this));
 		buttonPanel.add(newRule);
-		
+		frame.add(methodList,BorderLayout.CENTER);
 		frame.add(displayPanel, BorderLayout.NORTH);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.setVisible(true);
@@ -325,6 +329,7 @@ public class Window {
 	public void setLaa(double laa) {
 		this.laa = laa;
 	}
+	
 
 	public static void main(String[] args) { // S� PARA TESTAR DEPOIS REMOVER
 												// ISTO
