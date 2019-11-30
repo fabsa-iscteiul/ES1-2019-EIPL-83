@@ -11,12 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
 
 /**
@@ -32,8 +34,12 @@ public class Window {
 	private String[] operators_math = { "<=", "<", ">", ">=" };
 	private JPanel painel2;
 	private GridBagConstraints grid = new GridBagConstraints();
-
+	private JList<String> methodList;
+	private Handler handler;
+	private JScrollPane scrollPane = new JScrollPane();
+	
 	public Window() {
+		this.handler = new Handler();
 		addContent();
 
 	}
@@ -46,6 +52,9 @@ public class Window {
 		if (frame != null)
 			frame.dispose();
 		setupFrame("Project", 1, 1);
+		methodList = new JList<String>(handler.methodsName());
+		methodList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(methodList);
 		frame.setLayout(new BorderLayout());
 		JPanel displayPanel = new JPanel(); // FLOWLAYOUT IS THE DEFAULT
 		JPanel buttonPanel = new JPanel();
@@ -69,7 +78,7 @@ public class Window {
 		JButton newRule = new JButton("New Rule");
 		newRule.addActionListener(new MyActionListener("newRule", this));
 		buttonPanel.add(newRule);
-		
+		frame.add(scrollPane,BorderLayout.CENTER);
 		frame.add(displayPanel, BorderLayout.NORTH);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.setVisible(true);
@@ -127,13 +136,14 @@ public class Window {
 	}
 
 	public void create_new_rules_user() {
+		frame.dispose();
 		JFrame jframe = new JFrame();
 		jframe.setTitle("USER_RULES");
 		jframe.setSize(400, 400);
 		jframe.setLayout(new FlowLayout());
 		jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		jframe.setResizable(false);
-		jframe.setVisible(true);
+		
 
 		this.painel2 = new JPanel(new GridBagLayout());
 		JLabel label1 = new JLabel("CYCLO");
@@ -156,10 +166,13 @@ public class Window {
 		String selected_operator4 = (String) list_operadores4.getSelectedItem();
 
 		JTextField jtxt1 = new JTextField();
+		jtxt1.setText(""+cyclo);
 		JTextField jtxt2 = new JTextField();
+		jtxt2.setText(""+atfd);
 		JTextField jtxt3 = new JTextField();
+		jtxt3.setText(""+laa);
 		JTextField jtxt4 = new JTextField();
-
+		jtxt4.setText(""+loc);
 		jtxt1.setPreferredSize(new Dimension(40, 20));
 		jtxt2.setPreferredSize(new Dimension(40, 20));
 		jtxt3.setPreferredSize(new Dimension(40, 20));
@@ -228,7 +241,26 @@ public class Window {
 		painel2.add(jtxt4, grid);
 		
 		JButton creatRule = new JButton("Creat Rule");
+		creatRule.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int cycloUpdate = Integer.parseInt(jtxt1.getText());
+					cyclo = cycloUpdate;
+					int atfdUpdate = Integer.parseInt(jtxt2.getText());
+					atfd = atfdUpdate;
+					double laaUpdate = Double.parseDouble(jtxt3.getText());
+					laa=laaUpdate;
+					int nrLines = Integer.parseInt(jtxt4.getText());
+					loc = nrLines;
+					jframe.dispose();
+					addContent();
+				} catch (Exception exception) {
+				}
+
+			}
+		});
 		this.grid.gridx = 1;
 		this.grid.gridy = 7;
 		painel2.add(creatRule,grid);
@@ -236,6 +268,7 @@ public class Window {
 		
 
 		jframe.add(painel2);
+		jframe.setVisible(true);
 	}
 
 	/**
@@ -325,6 +358,7 @@ public class Window {
 	public void setLaa(double laa) {
 		this.laa = laa;
 	}
+	
 
 	public static void main(String[] args) { // S� PARA TESTAR DEPOIS REMOVER
 												// ISTO

@@ -2,7 +2,7 @@ package project.GUI;
 
 public class Method {
 
-	private double id;
+	private int id;
 	private String inPackage;
 	private String inClass;
 	private String methodName;
@@ -15,7 +15,7 @@ public class Method {
 	private boolean PMD;
 	private boolean is_feature_envy;
 
-	public Method(double id, String inPackage, String inClass, String methodName, double LOC, double CYCLO, double ATFD,
+	public Method(int id, String inPackage, String inClass, String methodName, double LOC, double CYCLO, double ATFD,
 			float LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
 		this.id = id;
 		this.inPackage = inPackage;
@@ -107,11 +107,11 @@ public class Method {
 				+ "]";
 	}
 
-	public double getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(double id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

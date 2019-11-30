@@ -15,7 +15,8 @@ public class ReadExcel {
 	public ReadExcel(String path) {
 		this.pathExcel = path;
 	}
-
+	
+	
 	public void readExel() throws IOException {
 		XSSFWorkbook xwb = new XSSFWorkbook(this.pathExcel);
 		XSSFSheet sheet = xwb.getSheetAt(0);
@@ -64,7 +65,7 @@ public class ReadExcel {
 
 	public void vectorToMethod(String[] vMethod) {
 
-		double id = Double.parseDouble(vMethod[0]);
+		int id = Integer.parseInt(vMethod[0]);
 		String inPackage = vMethod[1];
 		String inClass = vMethod[2];
 		String methodName = vMethod[3];
