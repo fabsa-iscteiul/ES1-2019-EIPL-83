@@ -1,6 +1,8 @@
 package tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
@@ -17,8 +19,8 @@ class MethodTest {
 	
 	private Method m;
 	
-	ArrayList<Object> objects = new ArrayList<Object>();
-	private double id;
+	private ArrayList<Object> objects = new ArrayList<Object>();
+	private int id;
 	private String inPackage;
 	private String inClass;
 	private String methodName;
@@ -41,7 +43,23 @@ class MethodTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma, PMD, is_feature_envy);
+		id = 4;
+		inPackage = "project.GUI";
+		inClass = "Method";
+		methodName = "name";
+		LOC = 5;
+		CYCLO = 6;
+		ATFD = 7;
+		LAA = 8;
+		is_long_method = true;
+		is_feature_envy = false;
+		iPlasma = true;
+		PMD = true;
+		is_feature_envy = false;
+		
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD,
+				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		
 		objects.add(id);
 		objects.add(inPackage);
 		objects.add(inClass);
@@ -56,9 +74,15 @@ class MethodTest {
 		objects.add(is_feature_envy);
 	}
 
+	
+	
 	@AfterEach
 	void tearDown() throws Exception {
 		m = null;
+		for(Object o: objects) {
+			o = null;
+			assertNull(o);
+		}
 	}
 
 	@Test
@@ -70,152 +94,183 @@ class MethodTest {
 
 	@Test
 	void testIsiPlasma() {
-		
+		assertEquals(true, m.isiPlasma());
 	}
 
 	@Test
 	void testSetiPlasma() {
-		fail("Not yet implemented");
+		assertEquals(true, m.isiPlasma());
+		m.setiPlasma(false);
+		assertEquals(false, m.isiPlasma());
 	}
 
 	@Test
 	void testIsPMD() {
-		fail("Not yet implemented");
+		assertEquals(true, m.isPMD());
 	}
 
 	@Test
 	void testSetPMD() {
-		fail("Not yet implemented");
-	}
+		assertEquals(PMD, m.isPMD());
+		m.setPMD(false);
+		assertEquals(false, m.isPMD());
+		}
 
 	@Test
 	void testGetInPackage() {
-		fail("Not yet implemented");
+		assertEquals(inPackage, m.getInPackage());
 	}
 
 	@Test
 	void testGetInClass() {
-		fail("Not yet implemented");
+		assertEquals(inClass, m.getInClass());
 	}
 
 	@Test
 	void testGetMethodName() {
-		fail("Not yet implemented");
+		assertEquals(methodName, m.getMethodName());
 	}
 
 	@Test
 	void testGetLOC() {
-		fail("Not yet implemented");
+		assertEquals(LOC, m.getLOC());
 	}
 
 	@Test
 	void testGetCYCLO() {
-		fail("Not yet implemented");
+		assertEquals(CYCLO, m.getCYCLO());
 	}
 
 	@Test
 	void testGetATFD() {
-		fail("Not yet implemented");
+		assertEquals(ATFD, m.getATFD());
 	}
 
 	@Test
 	void testGetLAA() {
-		fail("Not yet implemented");
+		assertEquals(LAA, m.getLAA());
 	}
 
 	@Test
 	void testIsIs_long_method() {
-		fail("Not yet implemented");
+		assertEquals(is_long_method, m.isIs_long_method());
 	}
 
 	@Test
 	void testIsIs_feature_envy() {
-		fail("Not yet implemented");
+		assertEquals(is_feature_envy, m.isIs_feature_envy());
 	}
 
 	@Test
 	void testDefaultLongMethod() {
-		fail("Not yet implemented");
+		m = new Method(id, inPackage, inClass, methodName, 81, 11, ATFD,
+				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		assertEquals(true, m.defaultLongMethod());
+		
+		m = new Method(id, inPackage, inClass, methodName, 81, 9, ATFD,
+				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		assertEquals(false, m.defaultLongMethod());
+		
+		m = new Method(id, inPackage, inClass, methodName, 79, 11, ATFD,
+				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		assertEquals(false, m.defaultLongMethod());
 	}
 
 	@Test
 	void testDefaultFeatureEnvy() {
-		fail("Not yet implemented");
-	}
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 5,
+				 (float) 0.41,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		assertEquals(true, m.defaultFeatureEnvy());
+		
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 4,
+				 (float) 0.41,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		assertEquals(false, m.defaultFeatureEnvy());
+		
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 5,
+				 (float) 0.43,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		assertEquals(false, m.defaultFeatureEnvy());
+		
+		}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		String s = "Method [id=" + id + ", inPackage=" + inPackage + ", inClass=" + inClass + ", methodName=" + methodName
+				+ ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD + ", LAA=" + LAA + ", is_long_method="
+				+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + ", is_feature_envy=" + is_feature_envy
+				+ "]";
+		assertEquals(s, m.toString());
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		assertEquals(id, m.getId());
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		assertEquals(id, m.getId());
+		m.setId(10);
+		assertEquals(10, m.getId());
 	}
 
-	@Test
-	void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testToString1() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testFinalize() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	void testObject() {
+//		
+//	}
+//
+////	@Test
+////	void testGetClass() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testHashCode() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testEquals() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testClone() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testToString1() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testNotify() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testNotifyAll() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testWaitLong() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testWaitLongInt() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testWait() {
+////		fail("Not yet implemented");
+////	}
+////
+////	@Test
+////	void testFinalize() {
+////		fail("Not yet implemented");
+////	}
 
 }
