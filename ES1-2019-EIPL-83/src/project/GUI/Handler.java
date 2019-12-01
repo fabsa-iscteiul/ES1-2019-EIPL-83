@@ -3,6 +3,7 @@ package project.GUI;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This class will have the main method and will give the GUI access to the
@@ -73,6 +74,34 @@ public class Handler {
 		for(int i =0; i<methods.size(); i++) // DECIDE WHAT TO PUT IN THE GUI 
 			names[i] = methods.get(i).getId()+ " "+methods.get(i).getMethodName() +" Long Method = " + methods.get(i).isIs_long_method()+" Feature_envy = " + methods.get(i).isIs_feature_envy();
 			return names;
+	}
+	
+	//Method to return Indicator PMD for a Method
+	public String resultsIndicatorPMD(Method m) {
+		if (m.isIs_long_method()) {
+			if (m.isPMD()) {
+				return "DCI";
+			} else {
+				return "ADII";
+			}
+		} else {
+			if (!m.isPMD()) {
+				return "ADCI";
+			} else {
+				return "DII";
+			}
+		}		
+	}
+	
+	
+	// Method that retrieves HashMap with True or False from data
+	public HashMap<String, String> compareValue() {
+		int j = methods.size();
+		HashMap<String, String> trueOrFalse = new HashMap<String, String>();
+		for(int i = 0; i < j; i++) {
+			trueOrFalse.put(methods.get(i).getMethodName(), resultsIndicatorPMD(methods.get(i)));
+		}
+		return trueOrFalse;
 	}
 
 }
