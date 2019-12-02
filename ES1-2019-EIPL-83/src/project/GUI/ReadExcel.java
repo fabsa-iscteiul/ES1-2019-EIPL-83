@@ -17,8 +17,12 @@ public class ReadExcel {
 	}
 	
 	
-	public void readExel() throws IOException {
+
+
+	public void readExel() {
+		try {
 		XSSFWorkbook xwb = new XSSFWorkbook(this.pathExcel);
+		
 		XSSFSheet sheet = xwb.getSheetAt(0);
 		XSSFRow row;
 		String cell = "";
@@ -35,16 +39,19 @@ public class ReadExcel {
 
 		//System.out.println(cell);
 		auxiliar(cell);
-
-	}
-
-	public void printMethods() {
-		for (Method x : methods) {
-			System.out.println(x);
+		
+		xwb.close();
+		
+		} catch (IOException e) {
+			System.out.println("Erro a let Excel");
+			e.printStackTrace();
 		}
+
 	}
 
-	public void auxiliar(String excelContent) {
+	
+
+	private void auxiliar(String excelContent) {
 
 		String[] rows = excelContent.split("\n");
 
@@ -55,16 +62,8 @@ public class ReadExcel {
 		}
 	}
 
-	public ArrayList<Method> getMethods() {
-		return methods;
-	}
 
-	public void setMethods(ArrayList<Method> methods) {
-		this.methods = methods;
-	}
-
-	public void vectorToMethod(String[] vMethod) {
-
+	private void vectorToMethod(String[] vMethod) {
 		int id = Integer.parseInt(vMethod[0]);
 		String inPackage = vMethod[1];
 		String inClass = vMethod[2];
@@ -81,6 +80,28 @@ public class ReadExcel {
 				PMD, is_feature_envy);
 		methods.add(method);
 		
+	}
+	
+	
+	public void setMethods(ArrayList<Method> methods) {
+		this.methods = methods;
+	}
+	
+	
+	public void printMethods() {
+		for (Method x : methods) {
+			System.out.println(x);
+		}
+	}
+	
+	public ArrayList<Method> getMethods() {
+		return methods;
+	}
+	
+	
+
+	public String getPathExcel() {
+		return pathExcel;
 	}
 
 

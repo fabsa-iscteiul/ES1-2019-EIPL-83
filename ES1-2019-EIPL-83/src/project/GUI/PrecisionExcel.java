@@ -12,13 +12,7 @@ public class PrecisionExcel {
 	}
 
 	public void calculate_accuracy_longMethod() {
-		// Aqui estou a ler o ficheiro excel.
-		try {
-			this.read_excel.readExel();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.read_excel.readExel();
 		double pmd_accuracy;
 		double Iplasma_accuracy;
 		double line_accuracy;
@@ -36,7 +30,7 @@ public class PrecisionExcel {
 			}
 			if (m.isIs_long_method() == m.isiPlasma() && m.isPMD() == m.isIs_long_method()) {
 				line_certain++;
-//comentário para ver commit			}
+//comentï¿½rio para ver commit			}
 
 			}
 			int size = this.read_excel.getMethods().size(); // tamanho do ficheiro excel
@@ -60,5 +54,5 @@ public class PrecisionExcel {
 		p_e.calculate_accuracy_longMethod();
 
 	}
-// visualização do commit
+// visualizaï¿½ï¿½o do commit
 }

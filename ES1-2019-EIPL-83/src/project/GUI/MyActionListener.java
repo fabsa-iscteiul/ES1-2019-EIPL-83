@@ -33,12 +33,7 @@ public class MyActionListener implements ActionListener {
 				File file = option.getSelectedFile();
 				String pathFileExcel = file.toPath().toString();
 				ReadExcel re = new ReadExcel(pathFileExcel);
-				try {
-					re.readExel();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				re.readExel();
 
 				re.printMethods();
 			}

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * This class will have the main method and will give the GUI access to the
- * Method objects, which will generate at the star of the application
+ * Method objects, which will generate at the start of the application
  * 
  * @author ES1_2019_LEIPL_83
  *
@@ -41,6 +41,7 @@ public class Handler {
 //				System.out.println(method.toString());
 //			}
 		} catch (Exception e) {
+			System.out.println("Erro a abrir o ficheiro !");
 			e.printStackTrace();
 		}
 	}
