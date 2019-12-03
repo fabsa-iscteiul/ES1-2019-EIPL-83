@@ -1,6 +1,8 @@
-package tests;
+package project.GUI;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 
@@ -10,9 +12,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import project.GUI.Method;
-import project.GUI.ReadExcel;
-
 class ReadExcelTest {
 	
 	ReadExcel reader;
@@ -20,6 +19,7 @@ class ReadExcelTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+
 	}
 
 	@AfterAll
@@ -29,11 +29,13 @@ class ReadExcelTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		reader = new ReadExcel(path);
+		assertNotNull(reader);
 	}
 	
 	@AfterEach
 	void tearDown() throws Exception {
 		reader = null;
+		assertNull(reader);
 	}
 
 	@Test
@@ -56,6 +58,29 @@ class ReadExcelTest {
 		Method method = new Method(2, "stuff", "that", "method", 3, 4, 5, 3, true, true, false, false);
 		m.add(method);
 		assertNotNull(reader.getMethods());
+		reader.setMethods(m);
+		assertEquals(m, reader.getMethods());
+		
+	}
+	
+
+	@Test
+	void testPrintMethods() {
+		
+		ArrayList<Method> m = new ArrayList<Method>();
+		Method method = new Method(2, "stuff", "that", "method", 3, 4, 5, 3, true, true, false, false);
+		m.add(method);
+		reader.setMethods(m);
+		
+		assertNotNull(reader.getPathExcel());
+		assertEquals(path, reader.getPathExcel());
+	
+	
+//	"Method [id=" + id + ", inPackage=" + inPackage + ", inClass=" + inClass + ", methodName=" + methodName
+//	+ ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD + ", LAA=" + LAA + ", is_long_method="
+//	+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + ", is_feature_envy=" + is_feature_envy
+//	+ "]"
+	
 	}
 //
 //	@Test
