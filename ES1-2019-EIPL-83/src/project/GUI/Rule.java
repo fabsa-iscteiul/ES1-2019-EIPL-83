@@ -8,11 +8,6 @@ public class Rule {
 	private double laa=0;
 	
 	public Rule(String name,String operator1, String operator2,String operator3,String operator4) {
-		if(!(operator1.equals("<=") || operator1.equals(">=") || operator1.equals("<") || operator1.equals(">") || 
-				operator2.equals("<=") || operator2.equals(">=") || operator2.equals("<") || operator2.equals(">") || 
-				operator3.equals("<=") || operator3.equals(">=") || operator3.equals("<") || operator3.equals(">") || 
-				operator4.equals("<=") || operator4.equals(">=") || operator4.equals("<") || operator4.equals(">") ))
-			return;
 		this.operator1=operator1;
 		this.operator2=operator2;
 		this.operator3=operator3;

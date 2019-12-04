@@ -25,7 +25,7 @@ public class Method {
 	private boolean iPlasma;
 	private boolean PMD;
 	private boolean is_feature_envy;
-	private boolean calculated_long_method;
+	private boolean calculated_long_method, calculated_Feature_envy;
 
 	
 	/** 
@@ -60,58 +60,6 @@ public class Method {
 		this.PMD = PMD;
 		this.is_feature_envy = is_feature_envy;
 	}
-	
-	
-
-	private void calculateLongMethod(Rule rule) {
-		boolean cycloBoolean=false, atfdBoolean=false, laaBoolean=false, locBoolean=false;
-		if(rule.getCyclo() != 0)
-			if(rule.getOperator1().equals("<="))
-				cycloBoolean = (CYCLO <= rule.getCyclo());
-			else if(rule.getOperator1().equals(">="))
-				cycloBoolean = (CYCLO >= rule.getCyclo());
-			else if(rule.getOperator1().equals(">"))
-				cycloBoolean = (CYCLO > rule.getCyclo());
-			else
-				cycloBoolean = (CYCLO < rule.getCyclo());
-		else // If not used in the rule its true
-			cycloBoolean = true;
-		if(rule.getAtfd() != 0)
-			if(rule.getOperator2().equals("<="))
-				atfdBoolean = (ATFD <= rule.getAtfd());
-			else if(rule.getOperator2().equals(">="))
-				atfdBoolean = (ATFD >= rule.getAtfd());
-			else if(rule.getOperator2().equals(">"))
-				atfdBoolean = (ATFD > rule.getAtfd());
-			else
-				atfdBoolean = (ATFD < rule.getAtfd());
-		else
-			atfdBoolean=true;
-		if(rule.getLaa() != 0) 
-			if(rule.getOperator3().equals("<="))
-				laaBoolean = (LAA <= rule.getLaa());
-			else if(rule.getOperator3().equals(">="))
-				laaBoolean = (LAA >= rule.getLaa());
-			else if(rule.getOperator3().equals(">"))
-				laaBoolean = (LAA >rule.getLaa());
-			else
-				laaBoolean = (LAA < rule.getLaa());
-		else
-			laaBoolean=true;
-		if(rule.getLoc() != 0)
-			if(rule.getOperator4().equals("<="))
-				locBoolean = ( LOC <= rule.getLoc());
-			else if(rule.getOperator4().equals(">="))
-				locBoolean = (LOC >= rule.getLoc());
-			else if(rule.getOperator4().equals(">"))
-				locBoolean = (LOC > rule.getLoc());
-			else
-				locBoolean = (LOC < rule.getLoc());
-		else
-			locBoolean = true;
-		if(cycloBoolean && locBoolean && atfdBoolean && laaBoolean)
-			calculated_long_method=true;
-	}
 
 	
 	/**
@@ -119,8 +67,13 @@ public class Method {
 	 * @return isPlasma 
 	 */
 	public boolean getCalculatedLongMethod(Rule rule) {
-		calculateLongMethod(rule);
+		calculate(rule,"Long Method");
 		return calculated_long_method;
+	}
+	
+	public boolean getCalculatedFeatureEnvy(Rule rule) {
+		calculate(rule,"Feature Envy");
+		return calculated_Feature_envy;
 	}
 	
 	/**
@@ -283,7 +236,61 @@ public class Method {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
+	
+	private void calculate(Rule rule, String method) {
+		calculated_Feature_envy=false; // first always set it to false so it can calculated it again
+		calculated_long_method=false;
+		boolean cycloBoolean=false, atfdBoolean=false, laaBoolean=false, locBoolean=false;
+		if(rule.getCyclo() != 0)
+			if(rule.getOperator1().equals("<="))
+				cycloBoolean = (rule.getCyclo() <= CYCLO);
+			else if(rule.getOperator1().equals(">="))
+				cycloBoolean = (rule.getCyclo() >= CYCLO);
+			else if(rule.getOperator1().equals(">"))
+				cycloBoolean = (rule.getCyclo() > CYCLO);
+			else
+				cycloBoolean = (rule.getCyclo() < CYCLO);
+		else // If not used in the rule its true
+			cycloBoolean = true;
+		if(rule.getAtfd() != 0)
+			if(rule.getOperator2().equals("<="))
+				atfdBoolean = (rule.getAtfd() <= ATFD);
+			else if(rule.getOperator2().equals(">="))
+				atfdBoolean = (rule.getAtfd() >= ATFD);
+			else if(rule.getOperator2().equals(">"))
+				atfdBoolean = (rule.getAtfd() > ATFD);
+			else
+				atfdBoolean = (rule.getAtfd() < ATFD);
+		else
+			atfdBoolean=true;
+		if(rule.getLaa() != 0) 
+			if(rule.getOperator3().equals("<="))
+				laaBoolean = (rule.getLaa() <= LAA);
+			else if(rule.getOperator3().equals(">="))
+				laaBoolean = (rule.getLaa() >= LAA);
+			else if(rule.getOperator3().equals(">"))
+				laaBoolean = (rule.getLaa() > LAA);
+			else
+				laaBoolean = (rule.getLaa() < LAA);
+		else
+			laaBoolean=true;
+		if(rule.getLoc() != 0)
+			if(rule.getOperator4().equals("<=")) 
+				locBoolean = (rule.getLoc() <= LOC);
+			
+			else if(rule.getOperator4().equals(">=")) 
+				locBoolean = (rule.getLoc() >= LOC);
+			
+			else if(rule.getOperator4().equals(">")) 
+				locBoolean = (rule.getLoc() > LOC);
+			else
+				locBoolean = (rule.getLoc() < LOC);
+		else
+			locBoolean = true;
+		if(cycloBoolean && locBoolean && atfdBoolean && laaBoolean && method.equals("Feature Envy"))
+			calculated_Feature_envy=true;
+		else if(cycloBoolean && locBoolean && atfdBoolean && laaBoolean && method.equals("Long Method"))
+			calculated_long_method=true;
+	}
 
 }

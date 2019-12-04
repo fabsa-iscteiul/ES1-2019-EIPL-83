@@ -107,6 +107,7 @@ public class Window {
 	public void createLongMethodWindow(Method m) {
 		frame.dispose();
 		frame = new JFrame("Long Method");
+		JPanel buttonPanel = new JPanel();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		JList<String> listRule = new JList<String>(ruleNames);
@@ -122,10 +123,22 @@ public class Window {
 					for(Rule rule: ruleList)
 						if(rule.getName().equals(listRule.getSelectedValue()))
 							JOptionPane.showMessageDialog(null, rule.getName() + "= " + m.getCalculatedLongMethod(rule));
+					frame.dispose();
+					addContent();
 				}
 			}
 		});
-		frame.add(calculate,BorderLayout.SOUTH);
+		
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addContent();
+			}
+		});
+		buttonPanel.add(calculate);
+		buttonPanel.add(backButton);
+		frame.add(buttonPanel,BorderLayout.SOUTH);
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -155,11 +168,7 @@ public class Window {
 		JComboBox<String> list_operadores3 = new JComboBox<String>(operators_math);
 		JComboBox<String> list_operadores4 = new JComboBox<String>(operators_math);
 
-		String selected_operator1 = (String) list_operadores1.getSelectedItem();
-		String selected_operator2 = (String) list_operadores2.getSelectedItem();
-		String selected_operator3 = (String) list_operadores3.getSelectedItem();
-		String selected_operator4 = (String) list_operadores4.getSelectedItem();
-
+		
 		JTextField jtxt1 = new JTextField();
 		JTextField jtxt2 = new JTextField();
 		JTextField jtxt3 = new JTextField();
@@ -237,7 +246,11 @@ public class Window {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Rule rule = new Rule("New Rule",selected_operator1,selected_operator2,selected_operator3,selected_operator4);
+					String selected_operator1 = (String) list_operadores1.getSelectedItem();
+					String selected_operator2 = (String) list_operadores2.getSelectedItem();
+					String selected_operator3 = (String) list_operadores3.getSelectedItem();
+					String selected_operator4 = (String) list_operadores4.getSelectedItem();
+					Rule rule = new Rule("New Rule "+ i,selected_operator1,selected_operator2,selected_operator3,selected_operator4);
 					if(!jtxt1.getText().equals(""))
 						rule.setCyclo(Integer.parseInt(jtxt1.getText()));
 					if(!jtxt2.getText().equals(""))
@@ -270,31 +283,31 @@ public class Window {
 	 * This method sets up the frame where the User will have access to the Feature
 	 * Envy
 	 */
-	public void createFeatureEnvy() {
+	public void createFeatureEnvy(Method m) {
 		frame.dispose();
-		setupFrame("Feature Envy", 4, 2);
-		JLabel labelATFD = new JLabel("ATFD? ( default value = 4 )");
-		frame.add(labelATFD);
-		JTextField atfd = new JTextField();
-		frame.add(atfd);
-		JLabel labelLAA = new JLabel("LAA? ( default value = 0.42 )");
-		frame.add(labelLAA);
-		JTextField laa = new JTextField();
-		frame.add(laa);
-		JLabel labelID = new JLabel("Method ID?");
-		frame.add(labelID);
-		JTextField methodID = new JTextField();
-		frame.add(methodID);
-		JButton calculateButton = new JButton("Calculate");
-		calculateButton.addActionListener(new ActionListener() {
-
+		frame = new JFrame("Feature Envy");
+		JPanel buttonPanel = new JPanel();
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		JList<String> listRule = new JList<String>(ruleNames);
+		frame.add(listRule, BorderLayout.CENTER);
+		JButton calculate = new JButton("Calculate");
+		calculate.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				if(listRule.getSelectedValue() == null)
+					return;
+				else {
+					for(Rule rule: ruleList)
+						if(rule.getName().equals(listRule.getSelectedValue()))
+							JOptionPane.showMessageDialog(null, "Feature envy= "+ m.getCalculatedFeatureEnvy(rule));
+					frame.dispose();
+					addContent();
+				}
 			}
 		});
-		frame.add(calculateButton);
+		
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			@Override
@@ -302,7 +315,10 @@ public class Window {
 				addContent();
 			}
 		});
-		frame.add(backButton);
+		buttonPanel.add(calculate);
+		buttonPanel.add(backButton);
+		frame.add(buttonPanel,BorderLayout.SOUTH);
+		frame.pack();
 		frame.setVisible(true);
 	}
 
