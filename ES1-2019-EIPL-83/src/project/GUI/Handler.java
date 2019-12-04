@@ -96,11 +96,11 @@ public class Handler {
 	
 	
 	// Method that retrieves HashMap with True or False from data
-	public HashMap<String, String> compareValue() {
+	public HashMap<Integer, String> compareValue() {
 		int j = methods.size();
-		HashMap<String, String> trueOrFalse = new HashMap<String, String>();
+		HashMap<Integer, String> trueOrFalse = new HashMap<Integer, String>();
 		for(int i = 0; i < j; i++) {
-			trueOrFalse.put(methods.get(i).getMethodName(), resultsIndicatorPMD(methods.get(i)));
+			trueOrFalse.put(methods.get(i).getId(), resultsIndicatorPMD(methods.get(i)));
 		}
 		return trueOrFalse;
 	}
