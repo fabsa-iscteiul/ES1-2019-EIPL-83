@@ -116,10 +116,10 @@ public class ReadExcel {
 		String inPackage = vMethod[1];
 		String inClass = vMethod[2];
 		String methodName = vMethod[3];
-		double LOC = Double.parseDouble(vMethod[4]);
-		double CYCLO = Double.parseDouble(vMethod[5]);
-		double ATFD = Double.parseDouble(vMethod[6]);
-		float LAA = Float.parseFloat(vMethod[7]);
+		int LOC = Integer.parseInt(vMethod[4]);
+		int CYCLO = Integer.parseInt(vMethod[5]);
+		int ATFD = Integer.parseInt(vMethod[6]);
+		double LAA = Double.parseDouble(vMethod[7]);
 		boolean is_long_method = Boolean.parseBoolean(vMethod[8]);
 		boolean iPlasma = Boolean.parseBoolean(vMethod[9]);
 		boolean PMD = Boolean.parseBoolean(vMethod[10]);

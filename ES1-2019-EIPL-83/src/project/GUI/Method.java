@@ -17,14 +17,15 @@ public class Method {
 	private String inPackage;
 	private String inClass;
 	private String methodName;
-	private double LOC;
-	private double CYCLO;
-	private double ATFD;
-	private float LAA;
+	private int LOC;
+	private int CYCLO;
+	private int ATFD;
+	private double LAA;
 	private boolean is_long_method;
 	private boolean iPlasma;
 	private boolean PMD;
 	private boolean is_feature_envy;
+	private boolean calculated_long_method;
 
 	
 	/** 
@@ -44,8 +45,8 @@ public class Method {
 	 * @param PMD
 	 * @param is_feature_envy  can say if the method is feature_envy
 	 */
-	public Method(int id, String inPackage, String inClass, String methodName, double LOC, double CYCLO, double ATFD,
-			float LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
+	public Method(int id, String inPackage, String inClass, String methodName, int LOC, int CYCLO, int ATFD,
+			double LAA, boolean is_long_method, boolean iPlasma, boolean PMD, boolean is_feature_envy) {
 		this.id = id;
 		this.inPackage = inPackage;
 		this.inClass = inClass;
@@ -59,7 +60,60 @@ public class Method {
 		this.PMD = PMD;
 		this.is_feature_envy = is_feature_envy;
 	}
+	
+	
 
+	private void calculateLongMethod(Rule rule) {
+		boolean cycloBoolean=false, atfdBoolean=false, laaBoolean=false, locBoolean=false;
+		if(rule.getCyclo() != 0)
+			if(rule.getOperator1().equals("<="))
+				cycloBoolean = (rule.getCyclo() <= CYCLO);
+			else if(rule.getOperator1().equals(">="))
+				cycloBoolean = (rule.getCyclo() >= CYCLO);
+			else if(rule.getOperator1().equals(">"))
+				cycloBoolean = (rule.getCyclo() > CYCLO);
+			else
+				cycloBoolean = (rule.getCyclo() < CYCLO);
+		if(rule.getAtfd() != 0)
+			if(rule.getOperator2().equals("<="))
+				atfdBoolean = (rule.getCyclo() <= ATFD);
+			else if(rule.getOperator2().equals(">="))
+				atfdBoolean = (rule.getCyclo() >= ATFD);
+			else if(rule.getOperator2().equals(">"))
+				atfdBoolean = (rule.getCyclo() > ATFD);
+			else
+				atfdBoolean = (rule.getCyclo() < ATFD);
+		if(rule.getLaa() != 0)
+			if(rule.getOperator3().equals("<="))
+				laaBoolean = (rule.getCyclo() <= LAA);
+			else if(rule.getOperator1().equals(">="))
+				laaBoolean = (rule.getCyclo() >= LAA);
+			else if(rule.getOperator1().equals(">"))
+				laaBoolean = (rule.getCyclo() > LAA);
+			else
+				laaBoolean = (rule.getCyclo() < LAA);
+		if(rule.getLoc() != 0)
+			if(rule.getOperator1().equals("<="))
+				locBoolean = (rule.getCyclo() <= LOC);
+			else if(rule.getOperator1().equals(">="))
+				locBoolean = (rule.getCyclo() >= LOC);
+			else if(rule.getOperator1().equals(">"))
+				locBoolean = (rule.getCyclo() > LOC);
+			else
+				locBoolean = (rule.getCyclo() < LOC);
+		if(cycloBoolean && locBoolean && atfdBoolean && laaBoolean)
+			calculated_long_method=true;
+	}
+
+	
+	/**
+	 * getter method of the class method that gives us the calculated_long_method attribute
+	 * @return isPlasma 
+	 */
+	public boolean getCalculatedLongMethod(Rule rule) {
+		calculateLongMethod(rule);
+		return calculated_long_method;
+	}
 	
 	/**
 	 * getter method of the class method that gives us the isplasma attribute
@@ -122,7 +176,7 @@ public class Method {
 	 * getter method of the class method that gives us the Loc attribute
 	 * @return loc atribute 
 	 */
-	public double getLOC() {
+	public int getLOC() {
 		return LOC;
 	}
 
@@ -130,7 +184,7 @@ public class Method {
 	 * getter method of the class method that gives us the Cyclo attribute
 	 * @return CYCLO atribute
 	 */
-	public double getCYCLO() {
+	public int getCYCLO() {
 		return CYCLO;
 	}
 
@@ -138,7 +192,7 @@ public class Method {
 	 * getter method of the class method that gives us the ATFD attribute
 	 * @return Atfd atribute
 	 */
-	public double getATFD() {
+	public int getATFD() {
 		return ATFD;
 	}
 
@@ -146,7 +200,7 @@ public class Method {
 	 * getter method of the class method that gives us the LAA attribute
 	 * @return Laa atribute
 	 */
-	public float getLAA() {
+	public double getLAA() {
 		return LAA;
 	}
 
@@ -199,10 +253,10 @@ public class Method {
 	 */
 	@Override
 	public String toString() {
-		return "Method [id=" + id + ", inPackage=" + inPackage + ", inClass=" + inClass + ", methodName=" + methodName
+		return id + ", methodName=" + methodName
 				+ ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD + ", LAA=" + LAA + ", is_long_method="
-				+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + ", is_feature_envy=" + is_feature_envy
-				+ "]";
+				+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + 
+				", is_feature_envy=" + is_feature_envy;
 	}
 
 	/**
@@ -221,5 +275,7 @@ public class Method {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 
 }

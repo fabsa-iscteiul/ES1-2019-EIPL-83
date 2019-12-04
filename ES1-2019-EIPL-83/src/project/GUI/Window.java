@@ -9,12 +9,15 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -37,11 +40,23 @@ public class Window {
 	private JList<String> methodList;
 	private Handler handler;
 	private JScrollPane scrollPane = new JScrollPane();
+	private ArrayList<Rule> ruleList = new ArrayList<Rule>();
+	private String[] ruleNames = new String[5];
+	private int i=2;
 	
 	public Window() {
 		this.handler = new Handler();
+		Rule defaultLongMethod = new Rule("Default Long Method Rule",">","","",">");
+		defaultLongMethod.setCyclo(cyclo);
+		defaultLongMethod.setLoc(loc);
+		ruleNames[0] = "Default Long Method Rule";
+		ruleList.add(defaultLongMethod);
+		Rule defaultFeatureEnvy = new Rule("Default Feature Envy Rule",">","","",">");
+		defaultLongMethod.setAtfd(atfd);
+		defaultLongMethod.setLaa(laa);
+		ruleNames[1] = "Default Feature Envy Rule";
+		ruleList.add(defaultFeatureEnvy);
 		addContent();
-
 	}
 
 	/**
@@ -89,49 +104,29 @@ public class Window {
 	 * This method sets up the frame where the User will have access to the Long
 	 * Method
 	 */
-	public void createLongMethodWindow() {
+	public void createLongMethodWindow(Method m) {
 		frame.dispose();
-		setupFrame("Long Method", 4, 2);
-		JLabel labelLOC = new JLabel("LOC? ( default value = 80 )");
-		frame.add(labelLOC);
-		JTextField locThreshold = new JTextField();
-		frame.add(locThreshold);
-		JLabel labelCYCLO = new JLabel("CYCLO? ( default value = 10 )");
-		frame.add(labelCYCLO);
-		JTextField cycleComplexity = new JTextField();
-		frame.add(cycleComplexity);
-		JLabel labelID = new JLabel("Method ID?");
-		frame.add(labelID);
-		JTextField methodID = new JTextField();
-		frame.add(methodID);
-		JButton calculateButton = new JButton("Calculate");
-		calculateButton.addActionListener(new ActionListener() {
-
+		frame = new JFrame("Long Method");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		JList<String> listRule = new JList<String>(ruleNames);
+		frame.add(listRule, BorderLayout.CENTER);
+		JButton calculate = new JButton("Calculate");
+		calculate.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					int nrLines = Integer.parseInt(locThreshold.getText());
-					// if it passes through this it means the user set a valid
-					// value for loc
-					loc = nrLines;
-					int cycloUpdate = Integer.parseInt(cycleComplexity.getText());
-					// if it passes through this it means the user set a valid
-					// value for cyclo
-					cyclo = cycloUpdate;
-				} catch (Exception exception) {
+				if(listRule.getSelectedValue() == null)
+					return;
+				else {
+					for(Rule rule: ruleList)
+						if(rule.getName().equals(listRule.getSelectedValue()))
+							JOptionPane.showMessageDialog(null, rule.getName() + "= " + m.getCalculatedLongMethod(rule));
 				}
-
 			}
 		});
-		frame.add(calculateButton);
-		JButton backButton = new JButton("Back");
-		backButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addContent();
-			}
-		});
-		frame.add(backButton);
+		frame.add(calculate,BorderLayout.SOUTH);
+		frame.pack();
 		frame.setVisible(true);
 	}
 
@@ -166,13 +161,9 @@ public class Window {
 		String selected_operator4 = (String) list_operadores4.getSelectedItem();
 
 		JTextField jtxt1 = new JTextField();
-		jtxt1.setText(""+cyclo);
 		JTextField jtxt2 = new JTextField();
-		jtxt2.setText(""+atfd);
 		JTextField jtxt3 = new JTextField();
-		jtxt3.setText(""+laa);
 		JTextField jtxt4 = new JTextField();
-		jtxt4.setText(""+loc);
 		jtxt1.setPreferredSize(new Dimension(40, 20));
 		jtxt2.setPreferredSize(new Dimension(40, 20));
 		jtxt3.setPreferredSize(new Dimension(40, 20));
@@ -246,14 +237,18 @@ public class Window {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int cycloUpdate = Integer.parseInt(jtxt1.getText());
-					cyclo = cycloUpdate;
-					int atfdUpdate = Integer.parseInt(jtxt2.getText());
-					atfd = atfdUpdate;
-					double laaUpdate = Double.parseDouble(jtxt3.getText());
-					laa=laaUpdate;
-					int nrLines = Integer.parseInt(jtxt4.getText());
-					loc = nrLines;
+					Rule rule = new Rule("New Rule",selected_operator1,selected_operator2,selected_operator3,selected_operator4);
+					if(!jtxt1.getText().equals(""))
+						rule.setCyclo(Integer.parseInt(jtxt1.getText()));
+					if(!jtxt2.getText().equals(""))
+						rule.setAtfd(Integer.parseInt(jtxt2.getText()));
+					if(!jtxt3.getText().equals(""))
+						rule.setLaa(Double.parseDouble(jtxt3.getText()));
+					if(!jtxt4.getText().equals(""))
+						rule.setLoc(Integer.parseInt(jtxt4.getText()));
+					ruleList.add(rule);
+					ruleNames[i]=rule.getName();
+					i++;
 					jframe.dispose();
 					addContent();
 				} catch (Exception exception) {
@@ -364,5 +359,12 @@ public class Window {
 												// ISTO
 		@SuppressWarnings("unused")
 		Window w = new Window();
+	}
+
+	public Method getSelectedMethod() {
+		for(Method method: handler.getMethods())
+			if(method.toString().equals(methodList.getSelectedValue()))
+				return method;
+		return null;
 	}
 }

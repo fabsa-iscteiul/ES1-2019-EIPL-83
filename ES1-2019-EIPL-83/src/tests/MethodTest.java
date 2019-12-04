@@ -24,10 +24,10 @@ class MethodTest {
 	private String inPackage;
 	private String inClass;
 	private String methodName;
-	private double LOC;
-	private double CYCLO;
-	private double ATFD;
-	private float LAA;
+	private int LOC;
+	private int CYCLO;
+	private int ATFD;
+	private double LAA;
 	private boolean is_long_method;
 	private boolean iPlasma;
 	private boolean PMD;

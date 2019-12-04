@@ -72,8 +72,8 @@ public class Handler {
 	public String[] methodsName() {
 		String[] names = new String[methods.size()];
 		for(int i =0; i<methods.size(); i++) // DECIDE WHAT TO PUT IN THE GUI 
-			names[i] = methods.get(i).getId()+ " "+methods.get(i).getMethodName() +" Long Method = " + methods.get(i).isIs_long_method()+" Feature_envy = " + methods.get(i).isIs_feature_envy();
-			return names;
+			names[i] = methods.get(i).toString();
+		return names;
 	}
 
 }
