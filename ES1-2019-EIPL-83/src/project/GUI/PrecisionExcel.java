@@ -3,22 +3,44 @@ package project.GUI;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * 
+ * 
+ * 
+ * 
+ * This class is responsible for calculating the accuracy of the Excel file and
+ * will receive a ReadExcel object.
+ * 
+ * @author Members TEAM ES1
+ * @version 1.0 Data : Dec 03-2019
+ *
+ */
+
 public class PrecisionExcel {
 
 	ReadExcel read_excel;
 
+	/**
+	 * constructor and initializes the attributes of the PrecisionExcel object
+	 * 
+	 * @param read_excel
+	 */
 	public PrecisionExcel(ReadExcel read_excel) {
 		this.read_excel = read_excel;
 	}
 
+	/**
+	 * This method will be responsible for calculating the accuracy of long_method
+	 * this will have three int instances that will be accumulative so this method
+	 * will go through all method objects and if its value is long_method equals the
+	 * isPlasma value of the object then the pmd_certai variable will be incremented
+	 * and so on for the other variables until read all method objects at the end
+	 * these variables are multiplied by 100 and divided by the size of the excel
+	 * file to calculate their precision at the end the value of the various
+	 * precisions is printed on the console
+	 */
 	public void calculate_accuracy_longMethod() {
-		// Aqui estou a ler o ficheiro excel.
-		try {
-			this.read_excel.readExel();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.read_excel.readExel();
 		double pmd_accuracy;
 		double Iplasma_accuracy;
 		double line_accuracy;
@@ -36,7 +58,7 @@ public class PrecisionExcel {
 			}
 			if (m.isIs_long_method() == m.isiPlasma() && m.isPMD() == m.isIs_long_method()) {
 				line_certain++;
-//comentário para ver commit			}
+//comentï¿½rio para ver commit			}
 
 			}
 			int size = this.read_excel.getMethods().size(); // tamanho do ficheiro excel
@@ -49,10 +71,20 @@ public class PrecisionExcel {
 		}
 	}
 
+	/**
+	 * 
+	 * This method prints the value o f the excel file size on the console.
+	 */
 	public void size_methods() {
 		System.out.println(this.read_excel.getMethods().size());
 	}
 
+	/**
+	 * main method that tests the calculate_accuracy_longMethod () method of the
+	 * Precision Excel class
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		File excel_file = new File("Long-Method.xlsx");
 		ReadExcel r_e = new ReadExcel(excel_file.toPath().toString());
@@ -60,5 +92,5 @@ public class PrecisionExcel {
 		p_e.calculate_accuracy_longMethod();
 
 	}
-// visualização do commit
+// visualizaï¿½ï¿½o do commit
 }
