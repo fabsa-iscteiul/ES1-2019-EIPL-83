@@ -4,8 +4,8 @@ public class Rule {
 	
 	private String name;
 	private String operator1,operator2,operator3,operator4;
-	private int loc,atfd,cyclo;
-	private double laa;
+	private int loc=0,atfd=0,cyclo=0;
+	private double laa=0;
 	
 	public Rule(String name,String operator1, String operator2,String operator3,String operator4) {
 		if(!(operator1.equals("<=") || operator1.equals(">=") || operator1.equals("<") || operator1.equals(">") || 

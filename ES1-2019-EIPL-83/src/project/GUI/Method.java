@@ -67,40 +67,48 @@ public class Method {
 		boolean cycloBoolean=false, atfdBoolean=false, laaBoolean=false, locBoolean=false;
 		if(rule.getCyclo() != 0)
 			if(rule.getOperator1().equals("<="))
-				cycloBoolean = (rule.getCyclo() <= CYCLO);
+				cycloBoolean = (CYCLO <= rule.getCyclo());
 			else if(rule.getOperator1().equals(">="))
-				cycloBoolean = (rule.getCyclo() >= CYCLO);
+				cycloBoolean = (CYCLO >= rule.getCyclo());
 			else if(rule.getOperator1().equals(">"))
-				cycloBoolean = (rule.getCyclo() > CYCLO);
+				cycloBoolean = (CYCLO > rule.getCyclo());
 			else
-				cycloBoolean = (rule.getCyclo() < CYCLO);
+				cycloBoolean = (CYCLO < rule.getCyclo());
+		else // If not used in the rule its true
+			cycloBoolean = true;
 		if(rule.getAtfd() != 0)
 			if(rule.getOperator2().equals("<="))
-				atfdBoolean = (rule.getCyclo() <= ATFD);
+				atfdBoolean = (ATFD <= rule.getAtfd());
 			else if(rule.getOperator2().equals(">="))
-				atfdBoolean = (rule.getCyclo() >= ATFD);
+				atfdBoolean = (ATFD >= rule.getAtfd());
 			else if(rule.getOperator2().equals(">"))
-				atfdBoolean = (rule.getCyclo() > ATFD);
+				atfdBoolean = (ATFD > rule.getAtfd());
 			else
-				atfdBoolean = (rule.getCyclo() < ATFD);
-		if(rule.getLaa() != 0)
+				atfdBoolean = (ATFD < rule.getAtfd());
+		else
+			atfdBoolean=true;
+		if(rule.getLaa() != 0) 
 			if(rule.getOperator3().equals("<="))
-				laaBoolean = (rule.getCyclo() <= LAA);
-			else if(rule.getOperator1().equals(">="))
-				laaBoolean = (rule.getCyclo() >= LAA);
-			else if(rule.getOperator1().equals(">"))
-				laaBoolean = (rule.getCyclo() > LAA);
+				laaBoolean = (LAA <= rule.getLaa());
+			else if(rule.getOperator3().equals(">="))
+				laaBoolean = (LAA >= rule.getLaa());
+			else if(rule.getOperator3().equals(">"))
+				laaBoolean = (LAA >rule.getLaa());
 			else
-				laaBoolean = (rule.getCyclo() < LAA);
+				laaBoolean = (LAA < rule.getLaa());
+		else
+			laaBoolean=true;
 		if(rule.getLoc() != 0)
-			if(rule.getOperator1().equals("<="))
-				locBoolean = (rule.getCyclo() <= LOC);
-			else if(rule.getOperator1().equals(">="))
-				locBoolean = (rule.getCyclo() >= LOC);
-			else if(rule.getOperator1().equals(">"))
-				locBoolean = (rule.getCyclo() > LOC);
+			if(rule.getOperator4().equals("<="))
+				locBoolean = ( LOC <= rule.getLoc());
+			else if(rule.getOperator4().equals(">="))
+				locBoolean = (LOC >= rule.getLoc());
+			else if(rule.getOperator4().equals(">"))
+				locBoolean = (LOC > rule.getLoc());
 			else
-				locBoolean = (rule.getCyclo() < LOC);
+				locBoolean = (LOC < rule.getLoc());
+		else
+			locBoolean = true;
 		if(cycloBoolean && locBoolean && atfdBoolean && laaBoolean)
 			calculated_long_method=true;
 	}

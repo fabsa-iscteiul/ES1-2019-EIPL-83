@@ -52,8 +52,8 @@ public class Window {
 		ruleNames[0] = "Default Long Method Rule";
 		ruleList.add(defaultLongMethod);
 		Rule defaultFeatureEnvy = new Rule("Default Feature Envy Rule",">","","",">");
-		defaultLongMethod.setAtfd(atfd);
-		defaultLongMethod.setLaa(laa);
+		defaultFeatureEnvy.setAtfd(atfd);
+		defaultFeatureEnvy.setLaa(laa);
 		ruleNames[1] = "Default Feature Envy Rule";
 		ruleList.add(defaultFeatureEnvy);
 		addContent();
