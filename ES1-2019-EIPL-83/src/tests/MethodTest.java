@@ -3,7 +3,6 @@ package tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 
@@ -16,9 +15,9 @@ import org.junit.jupiter.api.Test;
 import project.GUI.Method;
 
 class MethodTest {
-	
+
 	private Method m;
-	
+
 	private ArrayList<Object> objects = new ArrayList<Object>();
 	private int id;
 	private String inPackage;
@@ -56,10 +55,10 @@ class MethodTest {
 		iPlasma = true;
 		PMD = true;
 		is_feature_envy = false;
-		
-		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD,
-				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
-		
+
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma, PMD,
+				is_feature_envy);
+
 		objects.add(id);
 		objects.add(inPackage);
 		objects.add(inClass);
@@ -74,12 +73,10 @@ class MethodTest {
 		objects.add(is_feature_envy);
 	}
 
-	
-	
 	@AfterEach
 	void tearDown() throws Exception {
 		m = null;
-		for(Object o: objects) {
+		for (Object o : objects) {
 			o = null;
 			assertNull(o);
 		}
@@ -87,7 +84,7 @@ class MethodTest {
 
 	@Test
 	void testMethod() {
-		for(Object o: objects) { 
+		for (Object o : objects) {
 			assertNotNull(o);
 		}
 	}
@@ -114,7 +111,7 @@ class MethodTest {
 		assertEquals(PMD, m.isPMD());
 		m.setPMD(false);
 		assertEquals(false, m.isPMD());
-		}
+	}
 
 	@Test
 	void testGetInPackage() {
@@ -163,41 +160,40 @@ class MethodTest {
 
 	@Test
 	void testDefaultLongMethod() {
-		m = new Method(id, inPackage, inClass, methodName, 81, 11, ATFD,
-				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		m = new Method(id, inPackage, inClass, methodName, 81, 11, ATFD, LAA, is_long_method, iPlasma, PMD,
+				is_feature_envy);
 		assertEquals(true, m.defaultLongMethod());
-		
-		m = new Method(id, inPackage, inClass, methodName, 81, 9, ATFD,
-				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+
+		m = new Method(id, inPackage, inClass, methodName, 81, 9, ATFD, LAA, is_long_method, iPlasma, PMD,
+				is_feature_envy);
 		assertEquals(false, m.defaultLongMethod());
-		
-		m = new Method(id, inPackage, inClass, methodName, 79, 11, ATFD,
-				 LAA,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+
+		m = new Method(id, inPackage, inClass, methodName, 79, 11, ATFD, LAA, is_long_method, iPlasma, PMD,
+				is_feature_envy);
 		assertEquals(false, m.defaultLongMethod());
 	}
 
 	@Test
 	void testDefaultFeatureEnvy() {
-		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 5,
-				 (float) 0.41,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 5, (float) 0.41, is_long_method, iPlasma, PMD,
+				is_feature_envy);
 		assertEquals(true, m.defaultFeatureEnvy());
-		
-		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 4,
-				 (float) 0.41,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 4, (float) 0.41, is_long_method, iPlasma, PMD,
+				is_feature_envy);
 		assertEquals(false, m.defaultFeatureEnvy());
-		
-		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 5,
-				 (float) 0.43,  is_long_method, iPlasma,  PMD,  is_feature_envy);
+
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, 5, (float) 0.43, is_long_method, iPlasma, PMD,
+				is_feature_envy);
 		assertEquals(false, m.defaultFeatureEnvy());
-		
-		}
+
+	}
 
 	@Test
 	void testToString() {
-		String s = "Method [id=" + id + ", inPackage=" + inPackage + ", inClass=" + inClass + ", methodName=" + methodName
-				+ ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD + ", LAA=" + LAA + ", is_long_method="
-				+ is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD + ", is_feature_envy=" + is_feature_envy
-				+ "]";
+		String s = "[id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
+				+ ", LAA=" + LAA + ", is_long_method=" + is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD
+				+ ", is_feature_envy=" + is_feature_envy;
 		assertEquals(s, m.toString());
 	}
 
@@ -212,6 +208,5 @@ class MethodTest {
 		m.setId(10);
 		assertEquals(10, m.getId());
 	}
-
 
 }
