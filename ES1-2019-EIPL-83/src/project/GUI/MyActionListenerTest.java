@@ -1,8 +1,7 @@
 package project.GUI;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.awt.event.ActionEvent;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +14,7 @@ class MyActionListenerTest {
 	MyActionListener listener;
 	String type;
 	Window window;
-	
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -33,8 +32,7 @@ class MyActionListenerTest {
 	void tearDown() throws Exception {
 		listener = null;
 		assertNull(listener);
-		}
-
+	}
 
 	@Test
 	void testMyActionListener() {
@@ -48,20 +46,19 @@ class MyActionListenerTest {
 		type = "longMethod";
 		listener = new MyActionListener(type, window);
 		assertNotNull(listener);
-		
+
 		type = "feature_envy";
 		listener = new MyActionListener(type, window);
 		assertNotNull(listener);
-		
+
 		type = "open_excel";
 		listener = new MyActionListener(type, window);
 		assertNotNull(listener);
-		
+
 		type = "newRule";
 		listener = new MyActionListener(type, window);
 //		assertNotNull(listener.actionPerformed())
-		
-		
+
 	}
 
 }

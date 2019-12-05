@@ -10,7 +10,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -42,16 +41,16 @@ public class Window {
 	private JScrollPane scrollPane = new JScrollPane();
 	private ArrayList<Rule> ruleList = new ArrayList<Rule>();
 	private String[] ruleNames = new String[5];
-	private int i=2;
-	
+	private int i = 2;
+
 	public Window() {
 		this.handler = new Handler();
-		Rule defaultLongMethod = new Rule("Default Long Method Rule",">","","",">");
+		Rule defaultLongMethod = new Rule("Default Long Method Rule", ">", "", "", ">");
 		defaultLongMethod.setCyclo(cyclo);
 		defaultLongMethod.setLoc(loc);
 		ruleNames[0] = "Default Long Method Rule";
 		ruleList.add(defaultLongMethod);
-		Rule defaultFeatureEnvy = new Rule("Default Feature Envy Rule",">","","",">");
+		Rule defaultFeatureEnvy = new Rule("Default Feature Envy Rule", ">", "", "", ">");
 		defaultFeatureEnvy.setAtfd(atfd);
 		defaultFeatureEnvy.setLaa(laa);
 		ruleNames[1] = "Default Feature Envy Rule";
@@ -93,7 +92,7 @@ public class Window {
 		JButton newRule = new JButton("New Rule");
 		newRule.addActionListener(new MyActionListener("newRule", this));
 		buttonPanel.add(newRule);
-		frame.add(scrollPane,BorderLayout.CENTER);
+		frame.add(scrollPane, BorderLayout.CENTER);
 		frame.add(displayPanel, BorderLayout.NORTH);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.setVisible(true);
@@ -114,21 +113,22 @@ public class Window {
 		frame.add(listRule, BorderLayout.CENTER);
 		JButton calculate = new JButton("Calculate");
 		calculate.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(listRule.getSelectedValue() == null)
+				if (listRule.getSelectedValue() == null)
 					return;
 				else {
-					for(Rule rule: ruleList)
-						if(rule.getName().equals(listRule.getSelectedValue()))
-							JOptionPane.showMessageDialog(null, rule.getName() + "= " + m.getCalculatedLongMethod(rule));
+					for (Rule rule : ruleList)
+						if (rule.getName().equals(listRule.getSelectedValue()))
+							JOptionPane.showMessageDialog(null,
+									rule.getName() + "= " + m.getCalculatedLongMethod(rule));
 					frame.dispose();
 					addContent();
 				}
 			}
 		});
-		
+
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			@Override
@@ -138,7 +138,7 @@ public class Window {
 		});
 		buttonPanel.add(calculate);
 		buttonPanel.add(backButton);
-		frame.add(buttonPanel,BorderLayout.SOUTH);
+		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -151,7 +151,6 @@ public class Window {
 		jframe.setLayout(new FlowLayout());
 		jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		jframe.setResizable(false);
-		
 
 		this.painel2 = new JPanel(new GridBagLayout());
 		JLabel label1 = new JLabel("CYCLO");
@@ -168,7 +167,6 @@ public class Window {
 		JComboBox<String> list_operadores3 = new JComboBox<String>(operators_math);
 		JComboBox<String> list_operadores4 = new JComboBox<String>(operators_math);
 
-		
 		JTextField jtxt1 = new JTextField();
 		JTextField jtxt2 = new JTextField();
 		JTextField jtxt3 = new JTextField();
@@ -178,7 +176,7 @@ public class Window {
 		jtxt3.setPreferredSize(new Dimension(40, 20));
 		jtxt4.setPreferredSize(new Dimension(40, 20));
 
-		this.grid.insets = new Insets(10,10,10,10);
+		this.grid.insets = new Insets(10, 10, 10, 10);
 
 		this.grid.gridx = 0;
 		this.grid.gridy = 0; ///////// primeira posição da grid
@@ -239,7 +237,7 @@ public class Window {
 		this.grid.gridx = 2;
 		this.grid.gridy = 4;
 		painel2.add(jtxt4, grid);
-		
+
 		JButton creatRule = new JButton("Creat Rule");
 		creatRule.addActionListener(new ActionListener() {
 
@@ -250,17 +248,18 @@ public class Window {
 					String selected_operator2 = (String) list_operadores2.getSelectedItem();
 					String selected_operator3 = (String) list_operadores3.getSelectedItem();
 					String selected_operator4 = (String) list_operadores4.getSelectedItem();
-					Rule rule = new Rule("New Rule "+ i,selected_operator1,selected_operator2,selected_operator3,selected_operator4);
-					if(!jtxt1.getText().equals(""))
+					Rule rule = new Rule("New Rule " + i, selected_operator1, selected_operator2, selected_operator3,
+							selected_operator4);
+					if (!jtxt1.getText().equals(""))
 						rule.setCyclo(Integer.parseInt(jtxt1.getText()));
-					if(!jtxt2.getText().equals(""))
+					if (!jtxt2.getText().equals(""))
 						rule.setAtfd(Integer.parseInt(jtxt2.getText()));
-					if(!jtxt3.getText().equals(""))
+					if (!jtxt3.getText().equals(""))
 						rule.setLaa(Double.parseDouble(jtxt3.getText()));
-					if(!jtxt4.getText().equals(""))
+					if (!jtxt4.getText().equals(""))
 						rule.setLoc(Integer.parseInt(jtxt4.getText()));
 					ruleList.add(rule);
-					ruleNames[i]=rule.getName();
+					ruleNames[i] = rule.getName();
 					i++;
 					jframe.dispose();
 					addContent();
@@ -271,9 +270,7 @@ public class Window {
 		});
 		this.grid.gridx = 1;
 		this.grid.gridy = 7;
-		painel2.add(creatRule,grid);
-		
-		
+		painel2.add(creatRule, grid);
 
 		jframe.add(painel2);
 		jframe.setVisible(true);
@@ -293,21 +290,21 @@ public class Window {
 		frame.add(listRule, BorderLayout.CENTER);
 		JButton calculate = new JButton("Calculate");
 		calculate.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(listRule.getSelectedValue() == null)
+				if (listRule.getSelectedValue() == null)
 					return;
 				else {
-					for(Rule rule: ruleList)
-						if(rule.getName().equals(listRule.getSelectedValue()))
-							JOptionPane.showMessageDialog(null, "Feature envy= "+ m.getCalculatedFeatureEnvy(rule));
+					for (Rule rule : ruleList)
+						if (rule.getName().equals(listRule.getSelectedValue()))
+							JOptionPane.showMessageDialog(null, "Feature envy= " + m.getCalculatedFeatureEnvy(rule));
 					frame.dispose();
 					addContent();
 				}
 			}
 		});
-		
+
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			@Override
@@ -317,7 +314,7 @@ public class Window {
 		});
 		buttonPanel.add(calculate);
 		buttonPanel.add(backButton);
-		frame.add(buttonPanel,BorderLayout.SOUTH);
+		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -369,7 +366,6 @@ public class Window {
 	public void setLaa(double laa) {
 		this.laa = laa;
 	}
-	
 
 	public static void main(String[] args) { // Sï¿½ PARA TESTAR DEPOIS REMOVER
 												// ISTO
@@ -378,8 +374,8 @@ public class Window {
 	}
 
 	public Method getSelectedMethod() {
-		for(Method method: handler.getMethods())
-			if(method.toString().equals(methodList.getSelectedValue()))
+		for (Method method : handler.getMethods())
+			if (method.toString().equals(methodList.getSelectedValue()))
 				return method;
 		return null;
 	}
