@@ -1,6 +1,6 @@
 package project.GUI;
 /**
- * 
+ * This class is for customer to define own rule to detect defect
  * 
  * 
  * 
