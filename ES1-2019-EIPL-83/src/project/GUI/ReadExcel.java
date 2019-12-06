@@ -112,14 +112,14 @@ public class ReadExcel {
 	 * @param vMethod string broken by (/n)
 	 */
 	private void vectorToMethod(String[] vMethod) {
-		int id = Integer.parseInt(vMethod[0]);
+		int id = (int) Double.parseDouble(vMethod[0]);
 		String inPackage = vMethod[1];
 		String inClass = vMethod[2];
 		String methodName = vMethod[3];
-		int LOC = Integer.parseInt(vMethod[4]);
-		int CYCLO = Integer.parseInt(vMethod[5]);
-		int ATFD = Integer.parseInt(vMethod[6]);
-		double LAA = Double.parseDouble(vMethod[7]);
+		int LOC = (int) Double.parseDouble(vMethod[4]);
+		int CYCLO =(int) Double.parseDouble(vMethod[5]);
+		int ATFD =(int) Double.parseDouble(vMethod[6]);
+		int LAA =(int) Double.parseDouble(vMethod[7]);
 		boolean is_long_method = Boolean.parseBoolean(vMethod[8]);
 		boolean iPlasma = Boolean.parseBoolean(vMethod[9]);
 		boolean PMD = Boolean.parseBoolean(vMethod[10]);

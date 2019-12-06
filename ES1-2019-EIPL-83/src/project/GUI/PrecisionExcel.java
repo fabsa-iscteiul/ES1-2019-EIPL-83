@@ -17,7 +17,10 @@ import java.io.File;
 
 public class PrecisionExcel {
 
-	ReadExcel read_excel;
+	private ReadExcel read_excel;
+	private double pmd_accuracy;
+	private double Iplasma_accuracy;
+	private double line_accuracy;
 
 	/**
 	 * constructor and initializes the attributes of the PrecisionExcel object
@@ -40,9 +43,6 @@ public class PrecisionExcel {
 	 */
 	public void calculate_accuracy_longMethod() {
 		this.read_excel.readExel();
-		double pmd_accuracy;
-		double Iplasma_accuracy;
-		double line_accuracy;
 
 		int pmd_certain = 0;
 		int plasma_certain = 0;
@@ -60,15 +60,20 @@ public class PrecisionExcel {
 //coment�rio para ver commit			}
 
 			}
+		}
 			int size = this.read_excel.getMethods().size(); // tamanho do ficheiro excel
-			pmd_accuracy = (double) ((pmd_certain * 100) / (size));
-			Iplasma_accuracy = (double) ((plasma_certain * 100) / ((size)));
-			line_accuracy = (double) ((line_certain * 100) / ((size)));
+			this.pmd_accuracy = (double) ((pmd_certain * 100) / (size));
+			this.Iplasma_accuracy = (double) ((plasma_certain * 100) / ((size)));
+			this.line_accuracy = (double) ((line_certain * 100) / ((size)));
 			System.out.println("pmd_accuracy" + "=" + pmd_accuracy);
 			System.out.println("plasma_accuracy" + "=" + Iplasma_accuracy);
 			System.out.println("line_certain" + "=" + line_accuracy);
 		}
-	}
+	
+
+
+
+	
 
 	/**
 	 * 
@@ -84,12 +89,12 @@ public class PrecisionExcel {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		File excel_file = new File("Long-Method.xlsx");
-		ReadExcel r_e = new ReadExcel(excel_file.toPath().toString());
-		PrecisionExcel p_e = new PrecisionExcel(r_e);
-		p_e.calculate_accuracy_longMethod();
-
-	}
+//	public static void main(String[] args) {
+//		File excel_file = new File("Long-Method.xlsx");
+//		ReadExcel r_e = new ReadExcel(excel_file.toPath().toString());
+//		PrecisionExcel p_e = new PrecisionExcel(r_e);
+//		p_e.calculate_accuracy_longMethod();
+//
+//	}
 // visualiza��o do commit
 }
