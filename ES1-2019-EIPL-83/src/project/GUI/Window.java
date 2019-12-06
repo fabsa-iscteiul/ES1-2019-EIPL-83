@@ -34,6 +34,7 @@ public class Window {
 	private int loc = 80, cyclo = 10, atfd = 4; // DEFAULT VALUES
 	private double laa = 0.42;
 	private String[] operators_math = { "<=", "<", ">", ">=" };
+	private String[] operators_math2 = { "AND", "OR" };
 	private JPanel painel2;
 	private GridBagConstraints grid = new GridBagConstraints();
 	private JList<String> methodList;
@@ -45,12 +46,12 @@ public class Window {
 
 	public Window() {
 		this.handler = new Handler();
-		Rule defaultLongMethod = new Rule("Default Long Method Rule", ">", "", "", ">");
+		Rule defaultLongMethod = new Rule("Default Long Method Rule", ">", "", "", ">","","");
 		defaultLongMethod.setCyclo(cyclo);
 		defaultLongMethod.setLoc(loc);
 		ruleNames[0] = "Default Long Method Rule";
 		ruleList.add(defaultLongMethod);
-		Rule defaultFeatureEnvy = new Rule("Default Feature Envy Rule", ">", "", "", ">");
+		Rule defaultFeatureEnvy = new Rule("Default Feature Envy Rule", ">", "", "", ">","","");
 		defaultFeatureEnvy.setAtfd(atfd);
 		defaultFeatureEnvy.setLaa(laa);
 		ruleNames[1] = "Default Feature Envy Rule";
@@ -157,15 +158,22 @@ public class Window {
 		JLabel label2 = new JLabel("ATFD");
 		JLabel label3 = new JLabel("LAA");
 		JLabel label4 = new JLabel("LOC");
+		
 
 		JLabel label5 = new JLabel("Value");
 		JLabel label6 = new JLabel("Operator");
 		JLabel label7 = new JLabel("Thereshold");
+		JLabel label8= new JLabel("LongMethod");
+		JLabel label9= new JLabel("FeatureEnvy");
+		
 
 		JComboBox<String> list_operadores1 = new JComboBox<String>(operators_math);
 		JComboBox<String> list_operadores2 = new JComboBox<String>(operators_math);
 		JComboBox<String> list_operadores3 = new JComboBox<String>(operators_math);
 		JComboBox<String> list_operadores4 = new JComboBox<String>(operators_math);
+		JComboBox<String> list_operadores5 = new JComboBox<String>(operators_math2);
+		JComboBox<String> list_operadores6 = new JComboBox<String>(operators_math2);
+		
 
 		JTextField jtxt1 = new JTextField();
 		JTextField jtxt2 = new JTextField();
@@ -237,6 +245,23 @@ public class Window {
 		this.grid.gridx = 2;
 		this.grid.gridy = 4;
 		painel2.add(jtxt4, grid);
+		
+		this.grid.gridx=3;
+		this.grid.gridy=1;
+		painel2.add(list_operadores5,grid);
+		
+		this.grid.gridx=3;
+		this.grid.gridy=2;
+		painel2.add(label8,grid);
+		
+		
+		this.grid.gridx=3;
+		this.grid.gridy=3;
+		painel2.add(list_operadores6,grid);
+		
+		this.grid.gridx=3;
+		this.grid.gridy=4;
+		painel2.add(label9,grid);
 
 		JButton creatRule = new JButton("Creat Rule");
 		creatRule.addActionListener(new ActionListener() {
@@ -248,8 +273,11 @@ public class Window {
 					String selected_operator2 = (String) list_operadores2.getSelectedItem();
 					String selected_operator3 = (String) list_operadores3.getSelectedItem();
 					String selected_operator4 = (String) list_operadores4.getSelectedItem();
+					String selected_operator5 = (String) list_operadores5.getSelectedItem();
+					String selected_operator6 = (String) list_operadores6.getSelectedItem();
+					
 					Rule rule = new Rule("New Rule " + i, selected_operator1, selected_operator2, selected_operator3,
-							selected_operator4);
+							selected_operator4,selected_operator5,selected_operator6);
 					if (!jtxt1.getText().equals(""))
 						rule.setCyclo(Integer.parseInt(jtxt1.getText()));
 					if (!jtxt2.getText().equals(""))
