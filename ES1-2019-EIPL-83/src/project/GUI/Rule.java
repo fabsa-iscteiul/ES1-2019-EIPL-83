@@ -17,7 +17,7 @@ public class Rule {
 	private int loc=0,atfd=0,cyclo=0;
 	private double laa=0;
 	/** 
-     * constructor and initializes 
+     * constructor and initialises 
      * the attributes of the Rule object
 	 *@param name
 	 *@param operator1

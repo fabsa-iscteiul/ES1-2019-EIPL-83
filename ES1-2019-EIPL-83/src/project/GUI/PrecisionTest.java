@@ -1,7 +1,5 @@
 package project.GUI;
 
-import static org.junit.Assert.assertEquals;
-
 //
 import java.io.File;
 
@@ -28,5 +26,4 @@ class PrecisionTest {
 
 	}
 
-	
 }

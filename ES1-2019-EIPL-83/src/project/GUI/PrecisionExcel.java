@@ -1,7 +1,5 @@
 package project.GUI;
 
-import java.io.File;
-
 /**
  * 
  * 
@@ -61,19 +59,14 @@ public class PrecisionExcel {
 
 			}
 		}
-			int size = this.read_excel.getMethods().size(); // tamanho do ficheiro excel
-			this.pmd_accuracy = (double) ((pmd_certain * 100) / (size));
-			this.Iplasma_accuracy = (double) ((plasma_certain * 100) / ((size)));
-			this.line_accuracy = (double) ((line_certain * 100) / ((size)));
-			System.out.println("pmd_accuracy" + "=" + pmd_accuracy);
-			System.out.println("plasma_accuracy" + "=" + Iplasma_accuracy);
-			System.out.println("line_certain" + "=" + line_accuracy);
-		}
-	
-
-
-
-	
+		int size = this.read_excel.getMethods().size(); // tamanho do ficheiro excel
+		this.pmd_accuracy = (double) ((pmd_certain * 100) / (size));
+		this.Iplasma_accuracy = (double) ((plasma_certain * 100) / ((size)));
+		this.line_accuracy = (double) ((line_certain * 100) / ((size)));
+		System.out.println("pmd_accuracy" + "=" + pmd_accuracy);
+		System.out.println("plasma_accuracy" + "=" + Iplasma_accuracy);
+		System.out.println("line_certain" + "=" + line_accuracy);
+	}
 
 	/**
 	 * 
