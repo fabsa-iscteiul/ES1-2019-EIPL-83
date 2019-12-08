@@ -96,12 +96,44 @@ public class Handler {
 	
 	
 	// Method that retrieves HashMap with True or False from data
-	public HashMap<Integer, String> compareValue() {
+	public HashMap<Integer, String> comparePMDValue() {
 		int j = methods.size();
 		HashMap<Integer, String> trueOrFalse = new HashMap<Integer, String>();
 		for(int i = 0; i < j; i++) {
 			trueOrFalse.put(methods.get(i).getId(), resultsIndicatorPMD(methods.get(i)));
 		}
+		System.out.println(trueOrFalse);
+		return trueOrFalse;
+	}
+	
+	//Method to return Indicator against IPlasma vs reference
+	
+	public String resultsIndicatorIPlasma(Method m) {
+		if (m.isIs_long_method()) {
+			if (m.isiPlasma()) {
+				return Indicator.DCI.toString();
+			} else {
+				return Indicator.ADII.toString();
+			}
+		} else {
+			if (!m.isiPlasma()) {
+				return Indicator.ADCI.toString();
+			} else {
+				return Indicator.DII.toString();
+			}
+		}		
+	}
+	
+	
+	//Method to return HashMap with values for IPlasma indicators
+	
+	public HashMap<Integer, String> compareIPlasmaValue() {
+		int j = methods.size();
+		HashMap<Integer, String> trueOrFalse = new HashMap<Integer, String>();
+		for(int i = 0; i < j; i++) {
+			trueOrFalse.put(methods.get(i).getId(), resultsIndicatorIPlasma(methods.get(i)));
+		}
+		System.out.println(trueOrFalse);
 		return trueOrFalse;
 	}
 
