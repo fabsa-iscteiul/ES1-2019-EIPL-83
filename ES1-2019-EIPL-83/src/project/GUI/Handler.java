@@ -81,15 +81,15 @@ public class Handler {
 	public String resultsIndicatorPMD(Method m) {
 		if (m.isIs_long_method()) {
 			if (m.isPMD()) {
-				return "DCI";
+				return Indicator.DCI.toString();
 			} else {
-				return "ADII";
+				return Indicator.ADII.toString();
 			}
 		} else {
 			if (!m.isPMD()) {
-				return "ADCI";
+				return Indicator.ADCI.toString();
 			} else {
-				return "DII";
+				return Indicator.DII.toString();
 			}
 		}		
 	}
