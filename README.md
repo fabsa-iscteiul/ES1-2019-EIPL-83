@@ -18,6 +18,8 @@ This application aims to evaluate the quality of tools used to detect design def
 
 ## Built With
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [Eclipse](https://www.eclipse.org/) - Java IDE
+
 
 
 ## Releases
