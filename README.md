@@ -44,7 +44,7 @@ We divided the project into 3 different versions (sprints), which you can access
 * None were found after testing
 ### Not implemented
 #### Sprint 1  
-* Some button don't have action listeners  
+* Some buttons don't have action listeners  
 * Possibility of visualization of excel data   
 #### Sprint 2
 * Comparison of excel values
