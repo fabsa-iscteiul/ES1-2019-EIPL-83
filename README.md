@@ -31,7 +31,7 @@ We divided the project into 3 different versions (sprints), which you can access
 
 ## Bugs and not implemented features
 ### Bugs
-**Sprint 1**
+**Sprint 1** 
 * Opening excel file not working properly 
 * Long_method button freezes the app  
 **Sprint 2**  
@@ -39,17 +39,17 @@ We divided the project into 3 different versions (sprints), which you can access
 * Custom rule input doesn't accept the desired values  
 * Calculation of long method is working poorly  
 * Getting values from excel doesn't always work  
-**Sprint 3**  
+**Sprint 3**   
 * None were found after testing
 ### Not implemented
 **Sprint 1**  
 * All buttons have action listeners  
-* Possibility of visualization of excel data  
+* Possibility of visualization of excel data   
 **Sprint 2**  
 * Comparation of excel values
 * Calculation of feature_envy
 * Calculation of long_method
-* Custom rule full implementation
+* Custom rule full implementation  
 **Sprint 3**  
 * Have implemented everything we planned at the start of the project
 
