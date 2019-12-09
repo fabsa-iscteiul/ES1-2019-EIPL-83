@@ -10,6 +10,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,9 +22,12 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  * This class is responsible for setting up the Graphical User Interface (GUI)
@@ -396,6 +402,25 @@ public class Window {
 			if (method.toString().equals(methodList.getSelectedValue()))
 				return method;
 		return null;
+	}
+	
+	
+	//Method to return JTable to present IPlasma Indicators
+	public JTable getTable () {
+		HashMap<Integer, String> hm = handler.compareIPlasmaValue();
+		//String [] columnNames = { "Method ID", "Indicator" };
+		//Object [][] tabledate = new Object [hm.size()][1];
+		DefaultTableModel model = new DefaultTableModel(new Object [] {"Key", "Value"}, 0);
+		
+		//int z = 0;
+		for (Entry<Integer, String> a : hm.entrySet()) {
+			//tabledate[z][0] = a.getKey();
+			//tabledate[z][1] = a.getValue();
+			//z++;
+			model.addRow(new Object [] {a.getKey(), a.getValue()});
+		}
+		JTable j = new JTable(model);
+		return j;
 	}
 
 	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
