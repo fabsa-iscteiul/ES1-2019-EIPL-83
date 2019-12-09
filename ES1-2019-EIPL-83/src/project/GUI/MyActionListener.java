@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class MyActionListener implements ActionListener {
 
@@ -20,13 +21,17 @@ public class MyActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (type.equals("longMethod")) {
-			if(window.getSelectedMethod() == null)
+			if(window.getSelectedMethod() == null) {
+				JOptionPane.showMessageDialog(null, "Select one method");
 				return;
+			}
 			selectedMethod = window.getSelectedMethod();
 			window.createLongMethodWindow(selectedMethod);
 		} else if (type.equals("feature_envy")) {
-			if(window.getSelectedMethod() == null)
+			if(window.getSelectedMethod() == null) {
+				JOptionPane.showMessageDialog(null, "Select one method");
 				return;
+			}
 			selectedMethod = window.getSelectedMethod();
 			window.createFeatureEnvy(selectedMethod);
 		} else if (type.equals("open_excel")) {
