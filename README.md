@@ -1,4 +1,4 @@
-# Evaluation of software defect detection
+# Defects Detection
 This application aims to evaluate the quality of tools used to detect design defect in software projects.  
 
 
