@@ -409,13 +409,13 @@ public class Window {
 	public JTable getTable () {
 		HashMap<Integer, String> hm = handler.compareIPlasmaValue();
 		//String [] columnNames = { "Method ID", "Indicator" };
-		//Object [][] tabledate = new Object [hm.size()][1];
+		//Object [][] tabledata = new Object [hm.size()][1];
 		DefaultTableModel model = new DefaultTableModel(new Object [] {"Key", "Value"}, 0);
-		
+		//JTable k = new JTable (tabledata, columnNames);
 		//int z = 0;
 		for (Entry<Integer, String> a : hm.entrySet()) {
-			//tabledate[z][0] = a.getKey();
-			//tabledate[z][1] = a.getValue();
+			//tabledata[z][0] = a.getKey();
+			//tabledata[z][1] = a.getValue();
 			//z++;
 			model.addRow(new Object [] {a.getKey(), a.getValue()});
 		}
