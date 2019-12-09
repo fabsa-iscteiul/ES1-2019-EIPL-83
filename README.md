@@ -43,10 +43,10 @@ We divided the project into 3 different versions (sprints), which you can access
 * None were found after testing
 ### Not implemented
 #### Sprint 1  
-* All buttons have action listeners  
+* Some button don't have action listeners  
 * Possibility of visualization of excel data   
 #### Sprint 2
-* Comparation of excel values
+* Comparison of excel values
 * Calculation of feature_envy
 * Calculation of long_method
 * Custom rule full implementation  
