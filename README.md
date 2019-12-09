@@ -7,7 +7,7 @@ This application aims to evaluate the quality of tools used to detect design def
 
 ### This Java application is part of a university project at ISCTE-IUL
 #### Group: ES1-2019-EIPL-83
-#### Authors:
+#### Authors' names:
 Nº82608 Francisco Barros  
 Nº82652 Alexandre Ferreira  
 Nº20687 Pedro Santiago  
