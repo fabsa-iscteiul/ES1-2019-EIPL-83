@@ -15,7 +15,12 @@ This application aims to evaluate the quality of tools used to detect design def
 82286 - Bin Guan  
 79142 - Tomas Ferreira  
 
+
 ## Built With
 * [Maven](https://maven.apache.org/) - Dependency Management
+
+
+## Releases
+We divided the project into 3 different sprints, which you can access [HERE](https://github.com/fabsa-iscteiul/ES1-2019-EIPL-83/releases).
 
 
