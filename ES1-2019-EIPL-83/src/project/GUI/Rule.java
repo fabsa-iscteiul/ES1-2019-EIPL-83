@@ -151,7 +151,7 @@ public class Rule {
 		return laa;
 	}
 
-	// tentativa de commit
+	
 	
 	
 }
