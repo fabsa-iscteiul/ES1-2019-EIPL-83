@@ -1,17 +1,14 @@
-package project.GUI;
+package tests;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import project.GUI.Handler;
+import project.GUI.Method;
 
 class HandlerTest {
 
@@ -66,9 +63,8 @@ class HandlerTest {
 		ArrayList<Method> list3 = new ArrayList<>();
 		list3.add(auxiliar());
 
-	   assertEquals(421, list2.size());
-	   assertEquals(421, list1.size());
-	
+		assertEquals(421, list2.size());
+		assertEquals(421, list1.size());
 
 	}
 
@@ -82,7 +78,7 @@ class HandlerTest {
 		h3.vectorToMethod(vMethod);
 
 	}
-	
+
 	public Method auxiliar(String[] args) {
 		int id = Integer.parseInt(args[0]);
 		String inPackage = args[1];
@@ -99,7 +95,7 @@ class HandlerTest {
 		Method method = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma,
 				PMD, is_feature_envy);
 		return method;
-		
+
 	}
 
 	@Test
@@ -107,48 +103,46 @@ class HandlerTest {
 		setUp();
 		String[] vMethod = new String[] { "2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "true", "true", "true",
 				"true" };
-		String[] vMethod2= new String[] {"2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "true", "true",
-				"false", "true"};
-		String[] vMethod3= new String[] {"2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "false", "true",
-				"true", "true"};
-		String[] vMethod4= new String[] {"2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "false", "true",
-				"false", "true"};
-		
-		String[] vMethod5= new String[] {"2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "true", "false",
-				"false", "true"};
-		
-		String[] vMethod6= new String[] {"2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "false", "false",
-				"false", "true"};
-		
-		Method m=auxiliar(vMethod);
-		Method m2 =auxiliar(vMethod2);
+		String[] vMethod2 = new String[] { "2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "true", "true",
+				"false", "true" };
+		String[] vMethod3 = new String[] { "2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "false", "true",
+				"true", "true" };
+		String[] vMethod4 = new String[] { "2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "false", "true",
+				"false", "true" };
+
+		String[] vMethod5 = new String[] { "2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "true", "false",
+				"false", "true" };
+
+		String[] vMethod6 = new String[] { "2", "Package", "Rule", "Save", "4", "3", "2", "0.12", "false", "false",
+				"false", "true" };
+
+		Method m = auxiliar(vMethod);
+		Method m2 = auxiliar(vMethod2);
 		Method m3 = auxiliar(vMethod3);
 		Method m4 = auxiliar(vMethod4);
-		
-		Method m5= auxiliar(vMethod5);
-		
-		Method m6= auxiliar(vMethod6);
+
+		Method m5 = auxiliar(vMethod5);
+
+		Method m6 = auxiliar(vMethod6);
 		assertEquals("DCI", h1.resultsIndicatorPMD(m));
 		assertEquals("ADII", h1.resultsIndicatorPMD(m2));
 		assertEquals("DII", h1.resultsIndicatorPMD(m3));
 		assertEquals("ADCI", h1.resultsIndicatorPMD(m4));
-		
-		
+
 		assertEquals("DCI", h1.resultsIndicatorIPlasma(m));
 		assertEquals("ADII", h1.resultsIndicatorIPlasma(m5));
 		assertEquals("DII", h1.resultsIndicatorIPlasma(m3));
 		assertEquals("ADCI", h1.resultsIndicatorIPlasma(m6));
 
 	}
-	
+
 	@Test
 	void test_compareIplasmaValue() {
 		setUp();
-		HashMap<Integer, String> hm1=h1.compareIPlasmaValue();
-		HashMap<Integer, String>hm2=h2.comparePMDValue();
+		HashMap<Integer, String> hm1 = h1.compareIPlasmaValue();
+		HashMap<Integer, String> hm2 = h2.comparePMDValue();
 		assertEquals(hm1.size(), h1.compareIPlasmaValue().size());
 		assertEquals(hm2.size(), h2.compareIPlasmaValue().size());
-		
 
 	}
 

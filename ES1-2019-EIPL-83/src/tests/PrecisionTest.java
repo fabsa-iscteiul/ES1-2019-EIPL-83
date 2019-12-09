@@ -1,9 +1,12 @@
-package project.GUI;
+package tests;
 
 //
 import java.io.File;
 
 import org.junit.jupiter.api.Test;
+
+import project.GUI.PrecisionExcel;
+import project.GUI.ReadExcel;
 
 class PrecisionTest {
 	PrecisionExcel pe1, pe2, pe3;
