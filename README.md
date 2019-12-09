@@ -29,13 +29,27 @@ We divided the project into 3 different versions (sprints), which you can access
 * Sprint 3 (tag Fim_de_Sprint_3)  
 
 
-## Bugs and non-implemented features
+## Bugs and not implemented features
 ### Bugs
 **Sprint 1**
 * Opening excel file not working properly 
-* Long_method button freezes the app
+* Long_method button freezes the app  
 **Sprint 2**
-* Cannot compare values from excel properly
-* Custom rule input doesn't accept the desired values
-
+* Cannot compare values from excel properly  
+* Custom rule input doesn't accept the desired values  
+* Calculation of long method is working poorly  
+* Getting values from excel doesn't always work  
+**Sprint 3**
+* None were found after testing
+#### Not implemented
+**Sprint 1**
+* All buttons have action listeners  
+* Possibility of visualization of excel data  
+**Sprint 2**
+* Comparation of excel values
+* Calculation of feature_envy
+* Calculation of long_method
+* Custom rule full implementation
+**Sprint 3**
+* Have implemented everything we planned at the start of the project
 
