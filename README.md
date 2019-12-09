@@ -27,6 +27,7 @@ We divided the project into 3 different versions (sprints), which you can access
 * Sprint 1 (tag Fim_de_sprint_1)  
 * Sprint 2 (tag Fim_de_Sprint_2)  
 * Sprint 3 (tag Fim_de_Sprint_3)  
+* Defects Detection 1.0 (tag DefectsDetection-1.0)
 
 
 ## Bugs and not implemented features
