@@ -29,3 +29,13 @@ We divided the project into 3 different versions (sprints), which you can access
 * Sprint 3 (tag Fim_de_Sprint_3)  
 
 
+## Bugs and non-implemented features
+### Bugs
+**Sprint 1**
+* Opening excel file not working properly 
+* Long_method button freezes the app
+**Sprint 2**
+* Cannot compare values from excel properly
+* Custom rule input doesn't accept the desired values
+
+
