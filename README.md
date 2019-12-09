@@ -4,7 +4,7 @@
 
 ## Authors
 
-### This Java application is part of a university project at ISCTE-IUL in Lisbon, Portugal
+### This Java application is part of a university project at ISCTE-IUL
 #### Group: ES1-2019-EIPL-83
 #### Authors: 
 Nº82608 Francisco Barros  
