@@ -14,3 +14,8 @@ This application aims to evaluate the quality of tools used to detect design def
 82453 - Jose Pedro Cruz Fernandes   
 82286 - Bin Guan  
 79142 - Tomas Ferreira  
+
+## Built With
+* [Maven](https://maven.apache.org/) - Dependency Management
+
+
