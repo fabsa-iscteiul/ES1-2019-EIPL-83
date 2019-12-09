@@ -90,7 +90,7 @@ public class ReadExcel {
 	 * @param excel content
 	 */
 
-	private void auxiliar(String excelContent) {
+	public void auxiliar(String excelContent) {
 
 		String[] rows = excelContent.split("\n");
 
@@ -111,7 +111,7 @@ public class ReadExcel {
 	 * 
 	 * @param vMethod string broken by (/n)
 	 */
-	private void vectorToMethod(String[] vMethod) {
+	public void vectorToMethod(String[] vMethod) {
 		int id = (int) Double.parseDouble(vMethod[0]);
 		String inPackage = vMethod[1];
 		String inClass = vMethod[2];
