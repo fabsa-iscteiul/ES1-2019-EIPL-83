@@ -23,7 +23,7 @@ This application aims to evaluate the quality of tools used to detect design def
 
 
 ## Releases
-We divided the project into 3 different sprints, which you can access [HERE](https://github.com/fabsa-iscteiul/ES1-2019-EIPL-83/releases).  
+We divided the project into 3 different versions (sprints), which you can access [HERE](https://github.com/fabsa-iscteiul/ES1-2019-EIPL-83/releases).  
 * Sprint 1 (tag Fim_de_sprint_1)  
 * Sprint 2 (tag Fim_de_Sprint_2)  
 * Sprint 3 (tag Fim_de_Sprint_3)  
