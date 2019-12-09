@@ -3,6 +3,8 @@ package tests;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.awt.event.ActionEvent;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -61,6 +63,19 @@ class MyActionListenerTest {
 		type = "newRule";
 		listener = new MyActionListener(type, window);
 //		assertNotNull(listener.actionPerformed())
+
+	}
+	
+	@Test
+	void testactionPerfomed() {
+		type = "longMethod";
+		listener = new MyActionListener(type, window);
+	    ActionEvent e = new ActionEvent(new Object(),20,"alinhar");
+	    ActionEvent e1 = new ActionEvent(new Object(),20,"Open Excel");
+	    ActionEvent e2 = new ActionEvent(new Object(),20,"Featury Envy");
+		listener.actionPerformed(e);
+		listener.actionPerformed(e1);
+		listener.actionPerformed(e2);
 
 	}
 

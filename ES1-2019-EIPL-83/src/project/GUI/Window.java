@@ -69,7 +69,7 @@ public class Window {
 	 * This method sets up the main Frame, where the User is presented with all the
 	 * functionalities of the application
 	 */
-	private void addContent() {
+	public void addContent() {
 		if (frame != null)
 			frame.dispose();
 		setupFrame("Project", 1, 1);
