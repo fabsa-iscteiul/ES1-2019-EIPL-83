@@ -258,7 +258,7 @@ public class Method {
 		this.id = id;
 	}
 
-	private void calculate(Rule rule, String method) {
+	public void calculate(Rule rule, String method) {
 		calculated_Feature_envy = false; // first always set it to false so it can calculated it again
 		calculated_long_method = false;
 		boolean cycloBoolean = false, atfdBoolean = false, laaBoolean = false, locBoolean = false;

@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import project.GUI.Method;
+import project.GUI.Rule;
 
 class MethodTest {
 
@@ -207,6 +208,58 @@ class MethodTest {
 		assertEquals(id, m.getId());
 		m.setId(10);
 		assertEquals(10, m.getId());
+	}
+	
+	@Test
+	void test_Calculated() {
+		id = 4;
+		inPackage = "project.GUI";
+		inClass = "Method";
+		methodName = "name";
+		LOC = 5;
+		CYCLO = 6;
+		ATFD = 7;
+		LAA = 8;
+		is_long_method = true;
+		is_feature_envy = false;
+		iPlasma = true;
+		PMD = true;
+		is_feature_envy = false;
+
+		m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma, PMD,
+				is_feature_envy);
+		Rule r1 = new Rule("A", "<=", "<=", "<=", "<=", "OR", "OR");
+		Rule r2 = new Rule("A", "<=", "<=", "<=", "<=", "OR", "OR");
+		Rule r3 = new Rule("A", ">=", ">=", ">=", ">=", "OR", "OR");
+		Rule r4 = new Rule("A", ">", ">", ">", ">", "OR", "OR");
+		Rule r5 = new Rule("A", ">", ">", ">", ">", "OR", "OR");
+		
+		r1.setAtfd(4);
+		r1.setCyclo(5);
+		r1.setLaa(5.0);
+		r1.setLoc(4);
+		r2.setCyclo(0);
+		r2.setAtfd(0);
+		r2.setLaa(0);
+		r2.setLoc(0);
+		r3.setAtfd(500);
+		r3.setCyclo(500);
+		r3.setLaa(500.0);
+		r3.setLoc(988);
+		r4.setAtfd(500);
+		r4.setCyclo(400);
+		r4.setLaa(500.0);
+		r4.setLoc(600);
+		r5.setAtfd(3);
+		r5.setCyclo(5);
+		r5.setLaa(5.0);
+		r5.setLoc(5);
+		m.calculate(r1, "Featury Envy");
+		m.calculate(r2, "Feature Envy");
+		m.calculate(r3, "Feature Envy");
+		m.calculate(r4, "Feature Envy");
+		m.calculate(r5, "Feature Envy");
+		
 	}
 
 }
