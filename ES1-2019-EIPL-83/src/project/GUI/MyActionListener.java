@@ -22,7 +22,7 @@ public class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (type.equals("longMethod")) {
 			if(window.getSelectedMethod() == null) {
-				JOptionPane.showMessageDialog(null, "Select one method");
+				window.getTable();
 				return;
 			}
 			selectedMethod = window.getSelectedMethod();

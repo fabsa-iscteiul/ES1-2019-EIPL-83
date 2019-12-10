@@ -406,11 +406,18 @@ public class Window {
 	
 	
 	//Method to return JTable to present IPlasma Indicators
-	public JTable getTable () {
+	public void getTable () {
+		frame.dispose();
+		frame = new JFrame("Long Method");
+		JPanel buttonPanel = new JPanel();
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		JList<String> listRule = new JList<String>(ruleNames);
+		frame.add(listRule, BorderLayout.CENTER);
 		HashMap<Integer, String> hm = handler.compareIPlasmaValue();
 		//String [] columnNames = { "Method ID", "Indicator" };
 		//Object [][] tabledata = new Object [hm.size()][1];
-		DefaultTableModel model = new DefaultTableModel(new Object [] {"Key", "Value"}, 0);
+		DefaultTableModel model = new DefaultTableModel(new Object [] {"MethodID", "Indicator Value"}, 0);
 		//JTable k = new JTable (tabledata, columnNames);
 		//int z = 0;
 		for (Entry<Integer, String> a : hm.entrySet()) {
@@ -420,7 +427,20 @@ public class Window {
 			model.addRow(new Object [] {a.getKey(), a.getValue()});
 		}
 		JTable j = new JTable(model);
-		return j;
+		j.setFillsViewportHeight(true);
+		scrollPane.setViewportView(j);
+		frame.add(scrollPane, BorderLayout.CENTER);
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addContent();
+			}
+		});
+		buttonPanel.add(backButton);
+		frame.add(buttonPanel, BorderLayout.SOUTH);
+		frame.pack();
+		frame.setVisible(true);
 	}
 
 	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
