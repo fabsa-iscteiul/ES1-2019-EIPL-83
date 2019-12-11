@@ -434,7 +434,7 @@ public class Window {
 		buttonPanel.add(backButton);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();
-		frame.setSize(400, 100);
+		frame.setSize(400, 150);
 		frame.setVisible(true);
 	}
 	

@@ -136,5 +136,20 @@ public class Handler {
 		System.out.println(trueOrFalse);
 		return trueOrFalse;
 	}
+	
+	
+	//Method to return the results for each Indicator
+	public HashMap<String, Integer> getResults (HashMap<Integer, String> results) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("DCI", 0);
+		hm.put("DII", 0);
+		hm.put("ADCI", 0);
+		hm.put("ADII", 0);
+		for (int i : results.keySet()) {
+			
+			hm.computeIfPresent(results.get(i), (k,v) -> v+1);
+		}
+		return hm;
+	}
 
 }
