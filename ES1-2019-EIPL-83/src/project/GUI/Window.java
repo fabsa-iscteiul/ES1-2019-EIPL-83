@@ -450,6 +450,7 @@ public class Window {
 			frame = new JFrame("Long Method - PMD Evaluation");
 			hm = handler.comparePMDValue();
 		}
+		final HashMap<Integer, String> map = hm;
 		JPanel buttonPanel = new JPanel();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -469,6 +470,15 @@ public class Window {
 		j.setFillsViewportHeight(true);
 		scrollPane.setViewportView(j);
 		frame.add(scrollPane, BorderLayout.CENTER);
+		JButton results = new JButton("Results");
+		results.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				handler.getResults(map);				
+			}
+		});
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			@Override
@@ -476,6 +486,7 @@ public class Window {
 				addContent();
 			}
 		});
+		buttonPanel.add(results);
 		buttonPanel.add(backButton);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();

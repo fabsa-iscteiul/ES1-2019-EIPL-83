@@ -145,10 +145,10 @@ public class Handler {
 		hm.put("DII", 0);
 		hm.put("ADCI", 0);
 		hm.put("ADII", 0);
-		for (int i : results.keySet()) {
-			
-			hm.computeIfPresent(results.get(i), (k,v) -> v+1);
+		for (int i : results.keySet()) {			
+			hm.put(results.get(i), hm.get(results.get(i))+1);
 		}
+		System.out.println(hm);
 		return hm;
 	}
 
