@@ -11,9 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -27,7 +27,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  * This class is responsible for setting up the Graphical User Interface (GUI)
@@ -404,17 +403,56 @@ public class Window {
 		return null;
 	}
 	
+	public void getToolList() {
+		frame.dispose();
+		frame = new JFrame("SELECT TOOL TO EVALUATE");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
+		frame.setLayout(new BorderLayout());
+		JPanel buttonPanel = new JPanel();
+		DefaultListModel<String> list = new DefaultListModel<String>();
+		list.addElement("IPlasma");
+		list.addElement("PMD");
+		JList<String> toolList = new JList<String> (list);
+		frame.add(toolList, BorderLayout.CENTER);
+		JButton calculate = new JButton("Calculate");
+		calculate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				getLongMethodTableIPlasma(toolList.getSelectedValue());
+				
+			}
+		});
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addContent();
+			}
+		});
+		buttonPanel.add(calculate);
+		buttonPanel.add(backButton);
+		frame.add(buttonPanel, BorderLayout.SOUTH);
+		frame.pack();
+		frame.setSize(400, 100);
+		frame.setVisible(true);
+	}
+	
 	
 	//Method to return JTable to present IPlasma Indicators
-	public void getTable () {
+	public void getLongMethodTableIPlasma (String selectedTool) {
 		frame.dispose();
-		frame = new JFrame("Long Method");
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		if (selectedTool.equals("IPlasma")) {
+			frame = new JFrame("Long Method - IPlasma Evaluation");
+			hm = handler.compareIPlasmaValue();
+		} else {
+			frame = new JFrame("Long Method - PMD Evaluation");
+			hm = handler.comparePMDValue();
+		}
 		JPanel buttonPanel = new JPanel();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
-		JList<String> listRule = new JList<String>(ruleNames);
-		frame.add(listRule, BorderLayout.CENTER);
-		HashMap<Integer, String> hm = handler.compareIPlasmaValue();
 		//String [] columnNames = { "Method ID", "Indicator" };
 		//Object [][] tabledata = new Object [hm.size()][1];
 		DefaultTableModel model = new DefaultTableModel(new Object [] {"MethodID", "Indicator Value"}, 0);
@@ -426,6 +464,7 @@ public class Window {
 			//z++;
 			model.addRow(new Object [] {a.getKey(), a.getValue()});
 		}
+		
 		JTable j = new JTable(model);
 		j.setFillsViewportHeight(true);
 		scrollPane.setViewportView(j);
@@ -442,7 +481,10 @@ public class Window {
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+	
+	
+	
+	
 	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
 												// ISTO
 		@SuppressWarnings("unused")

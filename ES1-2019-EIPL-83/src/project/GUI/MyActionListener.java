@@ -22,7 +22,7 @@ public class MyActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (type.equals("longMethod")) {
 			if(window.getSelectedMethod() == null) {
-				window.getTable();
+				window.getToolList();
 				return;
 			}
 			selectedMethod = window.getSelectedMethod();
@@ -50,6 +50,6 @@ public class MyActionListener implements ActionListener {
 
 		} else if (type.equals("newRule")) {
 			window.create_new_rules_user();
-		}
+		} 
 	}
 }
