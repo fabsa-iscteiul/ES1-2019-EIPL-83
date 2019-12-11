@@ -133,7 +133,6 @@ public class Handler {
 		for(int i = 0; i < j; i++) {
 			trueOrFalse.put(methods.get(i).getId(), resultsIndicatorIPlasma(methods.get(i)));
 		}
-		System.out.println(trueOrFalse);
 		return trueOrFalse;
 	}
 	
@@ -148,7 +147,6 @@ public class Handler {
 		for (int i : results.keySet()) {			
 			hm.put(results.get(i), hm.get(results.get(i))+1);
 		}
-		System.out.println(hm);
 		return hm;
 	}
 

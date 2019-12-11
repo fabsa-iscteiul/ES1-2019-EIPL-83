@@ -475,8 +475,7 @@ public class Window {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				handler.getResults(map);				
+				JOptionPane.showMessageDialog(null, "Results: " + handler.getResults(map));		
 			}
 		});
 		JButton backButton = new JButton("Back");
