@@ -86,12 +86,15 @@ public class Window {
 		displayPanel.add(atfdDisplay);
 		JLabel laaDisplay = new JLabel("Laa Threshold = " + laa);
 		displayPanel.add(laaDisplay);
+		JButton comparing = new JButton("Evaluate Tools");
+		comparing.addActionListener(new MyActionListener("tools", this));
 		JButton longMethodButton = new JButton("Long Method");
 		longMethodButton.addActionListener(new MyActionListener("longMethod", this));
 		JButton featureEnvyButton = new JButton("Feature Envy");
 		featureEnvyButton.addActionListener(new MyActionListener("feature_envy", this));
 		JButton openButton = new JButton("Open Excel");
 		openButton.addActionListener(new MyActionListener("open_excel", this));
+		buttonPanel.add(comparing);
 		buttonPanel.add(longMethodButton);
 		buttonPanel.add(featureEnvyButton);
 		buttonPanel.add(openButton);
