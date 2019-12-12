@@ -152,6 +152,10 @@ public class Window {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Creates window to create new rules with user preferences
+	 */
+	
 	public void create_new_rules_user() {
 		frame.dispose();
 		JFrame jframe = new JFrame();
@@ -329,9 +333,9 @@ public class Window {
 					return;
 				else {
 					for (Rule rule : ruleList)
-						if (rule.getName().equals(listRule.getSelectedValue())){
+						if (rule.getName().equals(listRule.getSelectedValue())) {
 							frame.dispose();
-							displayResults(rule,"Feature Envy");
+							displayResults(rule, "Feature Envy");
 							break;
 						}
 				}
@@ -351,7 +355,7 @@ public class Window {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
+
 	private void displayResults(Rule rule, String type) {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -359,17 +363,17 @@ public class Window {
 		JPanel buttonPanel = new JPanel();
 		String[] result = new String[420];
 		int i = 0;
-		if(	type.equals("Feature Envy"))
-			for(Method m: handler.getMethods()) {
+		if (type.equals("Feature Envy"))
+			for (Method m : handler.getMethods()) {
 				result[i] = m.getId() + " " + m.getCalculatedFeatureEnvy(rule);
 				i++;
 			}
-		else 
-			for(Method m: handler.getMethods()) {
+		else
+			for (Method m : handler.getMethods()) {
 				result[i] = m.getId() + " " + m.getCalculatedLongMethod(rule);
 				i++;
 			}
-			
+
 		methodList = new JList<>(result);
 		scrollPane.setViewportView(methodList);
 		JButton backButton = new JButton("Back");
@@ -381,7 +385,7 @@ public class Window {
 		});
 		buttonPanel.add(backButton);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
-		frame.add(scrollPane,BorderLayout.CENTER);
+		frame.add(scrollPane, BorderLayout.CENTER);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 	}
@@ -444,6 +448,10 @@ public class Window {
 				return method;
 		return null;
 	}
+	
+	/**
+	 * Creates window to select which Tool will be evaluated
+	 */
 
 	public void getToolList() {
 		frame.dispose();
@@ -480,7 +488,10 @@ public class Window {
 		frame.setVisible(true);
 	}
 
-	// Method to return JTable to present IPlasma Indicators
+	/** Method to return JTable to present IPlasma Indicators
+	 * 
+	 * @param selectedTool
+	 */
 	public void getLongMethodTable(String selectedTool) {
 		if (frame != null)
 			frame.dispose();
@@ -527,17 +538,9 @@ public class Window {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
-	
-	public void getLongMethodResults () {
-		if (frame != null)
-			frame.dispose();
-		frame = new JFrame ("Long Method Evaluation");
-		
-	}
 
-	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
-												// ISTO
+	public static void main(String[] args) {
+
 		@SuppressWarnings("unused")
 		Window w = new Window();
 	}
