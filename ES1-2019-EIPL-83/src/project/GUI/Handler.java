@@ -47,7 +47,10 @@ public class Handler {
 		}
 	}
 	
-	
+	/**
+	 * create a method with information from a vector.
+	 * @param vMethod parameter to replace.
+	 */
 	public void vectorToMethod(String[] vMethod) {
 		int id = Integer.parseInt(vMethod[0]);
 		String inPackage = vMethod[1];
@@ -66,10 +69,18 @@ public class Handler {
 		methods.add(method);
 	}
 	
+	/**
+	 * get a method from a list.
+	 * @return methods
+	 */
 	public ArrayList<Method> getMethods() {
 		return methods;
 	}
 	
+	/**
+	 * get the name of each method within a list
+	 * @return names
+	 */
 	public String[] methodsName() {
 		String[] names = new String[methods.size()];
 		for(int i =0; i<methods.size(); i++) // DECIDE WHAT TO PUT IN THE GUI 
@@ -78,6 +89,11 @@ public class Handler {
 	}
 	
 	//Method to return Indicator PMD for a Method
+	/**
+	 * Method to return Indicator PMD for a Method
+	 * @param m
+	 * @return indicator
+	 */
 	public String resultsIndicatorPMD(Method m) {
 		if (m.isIs_long_method()) {
 			if (m.isPMD()) {
@@ -96,7 +112,12 @@ public class Handler {
 	
 	
 	// Method that retrieves HashMap with True or False from data
-	public HashMap<Integer, String> comparePMDValue() {
+	/**
+	 * Method that retrieves HashMap with True or False from data
+	 * @return trueOrFalse
+	 */
+     	public HashMap<Integer, String> comparePMDValue() {
+	
 		int j = methods.size();
 		HashMap<Integer, String> trueOrFalse = new HashMap<Integer, String>();
 		for(int i = 0; i < j; i++) {
@@ -107,7 +128,11 @@ public class Handler {
 	}
 	
 	//Method to return Indicator against IPlasma vs reference
-	
+	/**
+	 * Method to return Indicator against IPlasma vs reference
+	 * @param m
+	 * @return indicator
+	 */
 	public String resultsIndicatorIPlasma(Method m) {
 		if (m.isIs_long_method()) {
 			if (m.isiPlasma()) {
@@ -126,7 +151,10 @@ public class Handler {
 	
 	
 	//Method to return HashMap with values for IPlasma indicators
-	
+	/**
+	 * Method to return HashMap with values for IPlasma indicators
+	 * @return trueOrFalse
+	 */
 	public HashMap<Integer, String> compareIPlasmaValue() {
 		int j = methods.size();
 		HashMap<Integer, String> trueOrFalse = new HashMap<Integer, String>();
@@ -138,6 +166,11 @@ public class Handler {
 	
 	
 	//Method to return the results for each Indicator
+	/**
+	 * Method to return the results for each Indicator
+	 * @param results
+	 * @return hm
+	 */
 	public HashMap<String, Integer> getResults (HashMap<Integer, String> results) {
 		HashMap<String, Integer> hm = new HashMap<>();
 		hm.put("DCI", 0);
