@@ -310,7 +310,7 @@ public class Window {
 	 * This method sets up the frame where the User will have access to the Feature
 	 * Envy
 	 */
-	public void createFeatureEnvy(Method m) {
+	public void createFeatureEnvy() {
 		frame.dispose();
 		frame = new JFrame("Feature Envy");
 		JPanel buttonPanel = new JPanel();
@@ -328,7 +328,8 @@ public class Window {
 				else {
 					for (Rule rule : ruleList)
 						if (rule.getName().equals(listRule.getSelectedValue()))
-							JOptionPane.showMessageDialog(null, "Feature envy= " + m.getCalculatedFeatureEnvy(rule));
+							for(Method m: handler.getMethods())
+								m.getCalculatedFeatureEnvy(rule);
 					frame.dispose();
 					addContent();
 				}
@@ -363,6 +364,10 @@ public class Window {
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setLocationRelativeTo(null);
+	}
+	
+	public Handler getHandler() {
+		return handler;
 	}
 
 	public int getLoc() {
