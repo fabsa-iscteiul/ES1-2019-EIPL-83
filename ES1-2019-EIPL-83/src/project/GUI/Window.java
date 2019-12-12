@@ -414,7 +414,7 @@ public class Window {
 
 	public void getToolList() {
 		frame.dispose();
-		frame = new JFrame("SELECT TOOL TO EVALUATE");
+		frame = new JFrame("Select Tool To Evaluate");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		JPanel buttonPanel = new JPanel();
@@ -428,7 +428,7 @@ public class Window {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				getLongMethodTableIPlasma(toolList.getSelectedValue());
+				getLongMethodTable(toolList.getSelectedValue());
 
 			}
 		});
@@ -448,8 +448,9 @@ public class Window {
 	}
 
 	// Method to return JTable to present IPlasma Indicators
-	public void getLongMethodTableIPlasma(String selectedTool) {
-		frame.dispose();
+	public void getLongMethodTable(String selectedTool) {
+		if (frame != null)
+			frame.dispose();
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 		if (selectedTool.equals("IPlasma")) {
 			frame = new JFrame("Long Method - IPlasma Evaluation");
@@ -492,6 +493,14 @@ public class Window {
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	
+	
+	public void getLongMethodResults () {
+		if (frame != null)
+			frame.dispose();
+		frame = new JFrame ("Long Method Evaluation");
+		
 	}
 
 	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
