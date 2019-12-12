@@ -27,12 +27,7 @@ public class MyActionListener implements ActionListener {
 			selectedMethod = window.getSelectedMethod();
 			window.createLongMethodWindow(selectedMethod);
 		} else if (type.equals("feature_envy")) {
-			if(window.getSelectedMethod() == null) {
-				JOptionPane.showMessageDialog(null, "Select one method");
-				return;
-			}
-			selectedMethod = window.getSelectedMethod();
-			window.createFeatureEnvy(selectedMethod);
+				window.createFeatureEnvy();
 		} else if (type.equals("open_excel")) {
 
 			JFileChooser option = new JFileChooser("Importar ficheiros");

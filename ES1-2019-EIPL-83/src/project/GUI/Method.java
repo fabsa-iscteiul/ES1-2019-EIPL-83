@@ -25,7 +25,7 @@ public class Method {
 	private boolean iPlasma;
 	private boolean PMD;
 	private boolean is_feature_envy;
-	private boolean calculated_long_method, calculated_Feature_envy;
+	private boolean calculated_long_method=false, calculated_Feature_envy=false;
 
 	/**
 	 * constructor and initializes the attributes of the method object
@@ -235,7 +235,9 @@ public class Method {
 	public String toString() {
 		return "[id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
 				+ ", LAA=" + LAA + ", is_long_method=" + is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD
-				+ ", is_feature_envy=" + is_feature_envy;
+				+ ", is_feature_envy=" + is_feature_envy + ", "+ "calculated_long_method=" +
+				calculated_long_method + ", calculated_feature_envy=" +calculated_Feature_envy;
+			
 	}
 
 	/**
@@ -259,8 +261,6 @@ public class Method {
 	}
 
 	public void calculate(Rule rule, String method) {
-		calculated_Feature_envy = false; // first always set it to false so it can calculated it again
-		calculated_long_method = false;
 		boolean cycloBoolean = false, atfdBoolean = false, laaBoolean = false, locBoolean = false;
 		if (rule.getCyclo() != 0)
 			if (rule.getOperator1().equals("<="))

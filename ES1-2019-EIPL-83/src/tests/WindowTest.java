@@ -94,7 +94,7 @@ class WindowTest {
 
 		Method m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma, PMD,
 				is_feature_envy);
-		w.createFeatureEnvy(m);
+		w.createFeatureEnvy();
 
 	}
 	
