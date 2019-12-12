@@ -112,7 +112,7 @@ public class Window {
 	 * This method sets up the frame where the User will have access to the Long
 	 * Method
 	 */
-	public void createLongMethodWindow(Method m) {
+	public void createLongMethodWindow() {
 		frame.dispose();
 		frame = new JFrame("Long Method");
 		JPanel buttonPanel = new JPanel();
@@ -130,8 +130,9 @@ public class Window {
 				else {
 					for (Rule rule : ruleList)
 						if (rule.getName().equals(listRule.getSelectedValue()))
-							JOptionPane.showMessageDialog(null,
-									rule.getName() + "= " + m.getCalculatedLongMethod(rule));
+							for (Method m : handler.getMethods()) {
+								m.getCalculatedLongMethod(rule);
+							}
 					frame.dispose();
 					addContent();
 				}
@@ -330,7 +331,7 @@ public class Window {
 				else {
 					for (Rule rule : ruleList)
 						if (rule.getName().equals(listRule.getSelectedValue()))
-							for(Method m: handler.getMethods())
+							for (Method m : handler.getMethods())
 								m.getCalculatedFeatureEnvy(rule);
 					frame.dispose();
 					addContent();
@@ -367,7 +368,7 @@ public class Window {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setLocationRelativeTo(null);
 	}
-	
+
 	public Handler getHandler() {
 		return handler;
 	}
@@ -410,25 +411,25 @@ public class Window {
 				return method;
 		return null;
 	}
-	
+
 	public void getToolList() {
 		frame.dispose();
 		frame = new JFrame("SELECT TOOL TO EVALUATE");
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);	
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		JPanel buttonPanel = new JPanel();
 		DefaultListModel<String> list = new DefaultListModel<String>();
 		list.addElement("IPlasma");
 		list.addElement("PMD");
-		JList<String> toolList = new JList<String> (list);
+		JList<String> toolList = new JList<String>(list);
 		frame.add(toolList, BorderLayout.CENTER);
 		JButton calculate = new JButton("Calculate");
 		calculate.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				getLongMethodTableIPlasma(toolList.getSelectedValue());
-				
+
 			}
 		});
 		JButton backButton = new JButton("Back");
@@ -445,10 +446,9 @@ public class Window {
 		frame.setSize(400, 150);
 		frame.setVisible(true);
 	}
-	
-	
-	//Method to return JTable to present IPlasma Indicators
-	public void getLongMethodTableIPlasma (String selectedTool) {
+
+	// Method to return JTable to present IPlasma Indicators
+	public void getLongMethodTableIPlasma(String selectedTool) {
 		frame.dispose();
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 		if (selectedTool.equals("IPlasma")) {
@@ -462,28 +462,22 @@ public class Window {
 		JPanel buttonPanel = new JPanel();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
-		//String [] columnNames = { "Method ID", "Indicator" };
-		//Object [][] tabledata = new Object [hm.size()][1];
-		DefaultTableModel model = new DefaultTableModel(new Object [] {"MethodID", "Indicator Value"}, 0);
-		//JTable k = new JTable (tabledata, columnNames);
-		//int z = 0;
+		DefaultTableModel model = new DefaultTableModel(new Object[] { "MethodID", "Indicator Value" }, 0);
 		for (Entry<Integer, String> a : hm.entrySet()) {
-			//tabledata[z][0] = a.getKey();
-			//tabledata[z][1] = a.getValue();
-			//z++;
-			model.addRow(new Object [] {a.getKey(), a.getValue()});
+			model.addRow(new Object[] { a.getKey(), a.getValue() });
 		}
-		
 		JTable j = new JTable(model);
 		j.setFillsViewportHeight(true);
 		scrollPane.setViewportView(j);
 		frame.add(scrollPane, BorderLayout.CENTER);
 		JButton results = new JButton("Results");
 		results.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Results: " + handler.getResults(map) + "\nDCI - Defeitos Corretamente Identificados\nDII - Defeitos Incorretamente Identificados\nADCI - Ausências de Defeitos Corretamente Identificadas\nADII - Ausências de Defeitos Incorretamente Identificadas");		
+				JOptionPane.showMessageDialog(null, "Results: " + handler.getResults(map)
+						+ "\nDCI - Defeitos Corretamente Identificados\nDII - Defeitos Incorretamente Identificados\n"
+						+ "ADCI - Ausências de Defeitos Corretamente Identificadas\nADII - Ausências de Defeitos Incorretamente Identificadas");
 			}
 		});
 		JButton backButton = new JButton("Back");
@@ -499,10 +493,7 @@ public class Window {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
-	
-	
-	
+
 	public static void main(String[] args) { // SÓ PARA TESTAR DEPOIS REMOVER
 												// ISTO
 		@SuppressWarnings("unused")

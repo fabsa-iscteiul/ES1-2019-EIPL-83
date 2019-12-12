@@ -9,8 +9,7 @@ public class MyActionListener implements ActionListener {
 
 	private String type;
 	private Window window;
-	private Method selectedMethod;
-
+	
 	public MyActionListener(String type, Window window) {
 		this.type = type;
 		this.window = window;
@@ -19,11 +18,7 @@ public class MyActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (type.equals("longMethod")) {
-			if(window.getSelectedMethod() == null) {
-				return;
-			}
-			selectedMethod = window.getSelectedMethod();
-			window.createLongMethodWindow(selectedMethod);
+			window.createLongMethodWindow();
 		} else if (type.equals("feature_envy")) {
 				window.createFeatureEnvy();
 		} else if (type.equals("open_excel")) {

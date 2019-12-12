@@ -102,7 +102,6 @@ public class Handler {
 		for(int i = 0; i < j; i++) {
 			trueOrFalse.put(methods.get(i).getId(), resultsIndicatorPMD(methods.get(i)));
 		}
-		System.out.println(trueOrFalse);
 		return trueOrFalse;
 	}
 	
@@ -150,4 +149,12 @@ public class Handler {
 		return hm;
 	}
 
+	
+	public ArrayList<String> getLongMethodTest (Rule rule) {
+		ArrayList<String> methodsList = new ArrayList <String>();
+		for (Method m : getMethods()) {
+			methodsList.add("MethodID: " + m.getId() + " Result: ");
+		}
+		return methodsList;
+	}
 }
