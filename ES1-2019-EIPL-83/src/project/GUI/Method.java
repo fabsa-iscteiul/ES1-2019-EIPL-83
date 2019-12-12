@@ -233,7 +233,7 @@ public class Method {
 	 */
 	@Override
 	public String toString() {
-		return "[id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
+		return "id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
 				+ ", LAA=" + LAA + ", is_long_method=" + is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD
 				+ ", is_feature_envy=" + is_feature_envy + ", "+ "calculated_long_method=" +
 				calculated_long_method + ", calculated_feature_envy=" +calculated_Feature_envy;

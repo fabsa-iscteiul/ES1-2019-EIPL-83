@@ -480,7 +480,7 @@ public class Window {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Results: " + handler.getResults(map));		
+				JOptionPane.showMessageDialog(null, "Results: " + handler.getResults(map) + "\nDCI - Defeitos Corretamente Identificados\nDII - Defeitos Incorretamente Identificados\nADCI - Ausências de Defeitos Corretamente Identificadas\nADII - Ausências de Defeitos Incorretamente Identificadas");		
 			}
 		});
 		JButton backButton = new JButton("Back");
