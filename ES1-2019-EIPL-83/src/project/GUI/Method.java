@@ -65,14 +65,14 @@ public class Method {
 	 * 
 	 * @return isPlasma
 	 */
-	public boolean getCalculatedLongMethod(Rule rule) {
+	public String getCalculatedLongMethod(Rule rule) {
 		calculate(rule, "Long Method");
-		return calculated_long_method;
+		return "Calculated Long Method = " + calculated_long_method;
 	}
 
-	public boolean getCalculatedFeatureEnvy(Rule rule) {
+	public String getCalculatedFeatureEnvy(Rule rule) {
 		calculate(rule, "Feature Envy");
-		return calculated_Feature_envy;
+		return "Calculated Feature Envy = " + calculated_Feature_envy;
 	}
 
 	/**
@@ -235,8 +235,7 @@ public class Method {
 	public String toString() {
 		return "id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
 				+ ", LAA=" + LAA + ", is_long_method=" + is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD
-				+ ", is_feature_envy=" + is_feature_envy + ", "+ "calculated_long_method=" +
-				calculated_long_method + ", calculated_feature_envy=" +calculated_Feature_envy;
+				+ ", is_feature_envy=" + is_feature_envy;
 			
 	}
 
@@ -261,6 +260,10 @@ public class Method {
 	}
 
 	public void calculate(Rule rule, String method) {
+		if(method.equals("Feature envy")) // Se já tiver calculado tem que meter a false para voltar a calcular
+			calculated_Feature_envy = false;
+		else if(method.equals("Long Method"))
+			calculated_long_method=false;
 		boolean cycloBoolean = false, atfdBoolean = false, laaBoolean = false, locBoolean = false;
 		if (rule.getCyclo() != 0)
 			if (rule.getOperator1().equals("<="))
