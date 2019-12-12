@@ -129,12 +129,11 @@ public class Window {
 					return;
 				else {
 					for (Rule rule : ruleList)
-						if (rule.getName().equals(listRule.getSelectedValue()))
-							for (Method m : handler.getMethods()) {
-								m.getCalculatedLongMethod(rule);
-							}
-					frame.dispose();
-					addContent();
+						if (rule.getName().equals(listRule.getSelectedValue())) {
+							frame.dispose();
+							displayResults(rule, "Long Method");
+							break;
+						}
 				}
 			}
 		});
@@ -330,11 +329,11 @@ public class Window {
 					return;
 				else {
 					for (Rule rule : ruleList)
-						if (rule.getName().equals(listRule.getSelectedValue()))
-							for (Method m : handler.getMethods())
-								m.getCalculatedFeatureEnvy(rule);
-					frame.dispose();
-					addContent();
+						if (rule.getName().equals(listRule.getSelectedValue())){
+							frame.dispose();
+							displayResults(rule,"Feature Envy");
+							break;
+						}
 				}
 			}
 		});
@@ -350,6 +349,40 @@ public class Window {
 		buttonPanel.add(backButton);
 		frame.add(buttonPanel, BorderLayout.SOUTH);
 		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	private void displayResults(Rule rule, String type) {
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		JPanel buttonPanel = new JPanel();
+		String[] result = new String[420];
+		int i = 0;
+		if(	type.equals("Feature Envy"))
+			for(Method m: handler.getMethods()) {
+				result[i] = m.getId() + " " + m.getCalculatedFeatureEnvy(rule);
+				i++;
+			}
+		else 
+			for(Method m: handler.getMethods()) {
+				result[i] = m.getId() + " " + m.getCalculatedLongMethod(rule);
+				i++;
+			}
+			
+		methodList = new JList<>(result);
+		scrollPane.setViewportView(methodList);
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addContent();
+			}
+		});
+		buttonPanel.add(backButton);
+		frame.add(buttonPanel, BorderLayout.SOUTH);
+		frame.add(scrollPane,BorderLayout.CENTER);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 	}
 
