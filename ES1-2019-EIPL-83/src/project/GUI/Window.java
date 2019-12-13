@@ -355,9 +355,13 @@ public class Window {
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+/**
+ * Window to show results
+ * @param rule
+ * @param type
+ */
 	private void displayResults(Rule rule, String type) {
-		frame = new JFrame();
+		frame = new JFrame("Results");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		JPanel buttonPanel = new JPanel();
@@ -406,42 +410,69 @@ public class Window {
 		frame.setLocationRelativeTo(null);
 	}
 
-	public Handler getHandler() {
-		return handler;
-	}
-
+//	public Handler getHandler() {
+//		return handler;
+//	}
+	/**
+	 * getter method of the class Window that gives us the getLoc attribute
+	 * @return loc
+	 */
 	public int getLoc() {
 		return loc;
 	}
-
+	/**
+	 * getter method of the class Window that gives us the getCyclo attribute
+	 * @return cyclo
+	 */
 	public int getCyclo() {
 		return cyclo;
 	}
-
+	/**
+	 * setter method that replaces the value of the loc attribute of the Window object
+	 * @param loc parameter to replace
+	 */
 	public void setLoc(int loc) {
 		this.loc = loc;
 	}
-
+	/**
+	 * setter method that replaces the value of the cyclo attribute of the Window object
+	 * @param cyclo parameter to replace
+	 */
 	public void setCyclo(int cyclo) {
 		this.cyclo = cyclo;
 	}
-
+	/**
+	 * getter method of the class Window that gives us the getAtfd attribute
+	 * @return atfd
+	 */
 	public int getAtfd() {
 		return atfd;
 	}
-
+	/**
+	 * setter method that replaces the value of the atfd attribute of the Window object
+	 * @param atfd parameter to replace
+	 */
 	public void setAtfd(int atfd) {
 		this.atfd = atfd;
 	}
-
+	/**
+	 * getter method of the class Window that gives us the getLaa attribute
+	 * @return laa
+	 */
 	public double getLaa() {
 		return laa;
 	}
-
+	/**
+	 * setter method that replaces the value of the laa attribute of the Window object
+	 * @param laa parameter to replace
+	 */
 	public void setLaa(double laa) {
 		this.laa = laa;
 	}
-
+	/**
+	 * getter method of the class Window that gives us the getSelectedMethod attribute
+	 * @return method or null
+	 */
 	public Method getSelectedMethod() {
 		for (Method method : handler.getMethods())
 			if (method.toString().equals(methodList.getSelectedValue()))
