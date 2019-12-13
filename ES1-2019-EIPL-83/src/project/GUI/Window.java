@@ -314,7 +314,7 @@ public class Window {
 
 	/**
 	 * This method sets up the frame where the User will have access to the Feature
-	 * Envy
+	 * Envy rule selection
 	 */
 	public void createFeatureEnvy() {
 		frame.dispose();
@@ -412,9 +412,6 @@ public class Window {
 		frame.setLocationRelativeTo(null);
 	}
 
-//	public Handler getHandler() {
-//		return handler;
-//	}
 	/**
 	 * getter method of the class Window that gives us the getLoc attribute
 	 * 

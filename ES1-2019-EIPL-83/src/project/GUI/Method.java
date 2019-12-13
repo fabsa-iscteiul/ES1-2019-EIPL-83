@@ -60,16 +60,20 @@ public class Method {
 	}
 
 	/**
-	 * getter method of the class method that gives us the calculated_long_method
-	 * attribute
-	 * 
-	 * @return isPlasma
+	 *
+	 * @param rule
+	 * @return "Calculated Long Method = " + calculated_long_method
 	 */
 	public String getCalculatedLongMethod(Rule rule) {
 		calculate(rule, "Long Method");
 		return "Calculated Long Method = " + calculated_long_method;
 	}
-
+	
+	/**
+	 * 
+	 * @param rule
+	 * @return "Calculated Feature Envy = " + calculated_Feature_envy
+	 */
 	public String getCalculatedFeatureEnvy(Rule rule) {
 		calculate(rule, "Feature Envy");
 		return "Calculated Feature Envy = " + calculated_Feature_envy;
@@ -78,7 +82,7 @@ public class Method {
 	/**
 	 * getter method of the class method that gives us the isplasma attribute
 	 * 
-	 * @return isPlasma
+	 * @return isiPlasma
 	 */
 	public boolean isiPlasma() {
 		return iPlasma;
@@ -145,7 +149,7 @@ public class Method {
 	/**
 	 * getter method of the class method that gives us the Loc attribute
 	 * 
-	 * @return loc atribute
+	 * @return loc attribute
 	 */
 	public int getLOC() {
 		return LOC;
@@ -154,7 +158,7 @@ public class Method {
 	/**
 	 * getter method of the class method that gives us the Cyclo attribute
 	 * 
-	 * @return CYCLO atribute
+	 * @return CYCLO attribute
 	 */
 	public int getCYCLO() {
 		return CYCLO;
@@ -163,7 +167,7 @@ public class Method {
 	/**
 	 * getter method of the class method that gives us the ATFD attribute
 	 * 
-	 * @return Atfd atribute
+	 * @return Atfd attribute
 	 */
 	public int getATFD() {
 		return ATFD;
@@ -172,7 +176,7 @@ public class Method {
 	/**
 	 * getter method of the class method that gives us the LAA attribute
 	 * 
-	 * @return Laa atribute
+	 * @return Laa attribute
 	 */
 	public double getLAA() {
 		return LAA;
@@ -191,7 +195,7 @@ public class Method {
 	/**
 	 * getter method of the class method that gives us the is_feature_envy attribute
 	 * 
-	 * @return isPlasma atribute
+	 * @return isPlasma attribute
 	 */
 	public boolean isIs_feature_envy() {
 		return is_feature_envy;
@@ -259,6 +263,12 @@ public class Method {
 		this.id = id;
 	}
 
+	/**
+	 * Calculates if the method is feature envy or long method depending
+	 * on the selected rule and the string passed in the method parameter
+	 * @param rule
+	 * @param method
+	 */
 	public void calculate(Rule rule, String method) {
 		if(method.equals("Feature Envy")) // Se já tiver calculado tem que meter a false para voltar a calcular
 			calculated_Feature_envy = false;

@@ -14,7 +14,7 @@ public class MyActionListener implements ActionListener {
 		this.type = type;
 		this.window = window;
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (type.equals("longMethod")) {

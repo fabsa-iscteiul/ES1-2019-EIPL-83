@@ -15,7 +15,10 @@ import java.util.HashMap;
 public class Handler {
 
 	private ArrayList<Method> methods = new ArrayList<Method>();
-	
+	/**
+	 * Runs buildObjects method to populate the array list
+	 * 
+	 */
 	public Handler() {
 		// TODO Auto-generated constructor stub
 		BuildObjects();
@@ -38,9 +41,6 @@ public class Handler {
 				line = br.readLine();
 			}
 			br.close();
-//			for (Method method : methods) {
-//				System.out.println(method.toString());
-//			}
 		} catch (Exception e) {
 			System.out.println("Erro a abrir o ficheiro !");
 			e.printStackTrace();
@@ -88,7 +88,6 @@ public class Handler {
 		return names;
 	}
 	
-	//Method to return Indicator PMD for a Method
 	/**
 	 * Method to return Indicator PMD for a Method
 	 * @param m
@@ -111,7 +110,6 @@ public class Handler {
 	}
 	
 	
-	// Method that retrieves HashMap with True or False from data
 	/**
 	 * Method that retrieves HashMap with True or False from data
 	 * @return trueOrFalse
@@ -126,7 +124,6 @@ public class Handler {
 		return trueOrFalse;
 	}
 	
-	//Method to return Indicator against IPlasma vs reference
 	/**
 	 * Method to return Indicator against IPlasma vs reference
 	 * @param m
@@ -149,7 +146,6 @@ public class Handler {
 	}
 	
 	
-	//Method to return HashMap with values for IPlasma indicators
 	/**
 	 * Method to return HashMap with values for IPlasma indicators
 	 * @return trueOrFalse
@@ -163,8 +159,6 @@ public class Handler {
 		return trueOrFalse;
 	}
 	
-	
-	//Method to return the results for each Indicator
 	/**
 	 * Method to return the results for each Indicator
 	 * @param results
@@ -182,7 +176,11 @@ public class Handler {
 		return hm;
 	}
 
-	
+	/**
+	 * 
+	 * @param rule
+	 * @return ArrayList<String>
+	 */
 	public ArrayList<String> getLongMethodTest (Rule rule) {
 		ArrayList<String> methodsList = new ArrayList <String>();
 		for (Method m : getMethods()) {

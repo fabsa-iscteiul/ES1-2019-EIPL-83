@@ -55,7 +55,6 @@ public class PrecisionExcel {
 			}
 			if (m.isIs_long_method() == m.isiPlasma() && m.isPMD() == m.isIs_long_method()) {
 				line_certain++;
-//coment�rio para ver commit			}
 
 			}
 		}
@@ -76,18 +75,4 @@ public class PrecisionExcel {
 		System.out.println(this.read_excel.getMethods().size());
 	}
 
-	/**
-	 * main method that tests the calculate_accuracy_longMethod () method of the
-	 * Precision Excel class
-	 * 
-	 * @param args
-	 */
-//	public static void main(String[] args) {
-//		File excel_file = new File("Long-Method.xlsx");
-//		ReadExcel r_e = new ReadExcel(excel_file.toPath().toString());
-//		PrecisionExcel p_e = new PrecisionExcel(r_e);
-//		p_e.calculate_accuracy_longMethod();
-//
-//	}
-// visualiza��o do commit
 }

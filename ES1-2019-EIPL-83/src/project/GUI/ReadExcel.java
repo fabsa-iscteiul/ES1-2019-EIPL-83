@@ -68,7 +68,6 @@ public class ReadExcel {
 
 		}
 
-		//System.out.println(cell);
 		auxiliar(cell);
 		
 		xwb.close();
@@ -95,9 +94,7 @@ public class ReadExcel {
 		String[] rows = excelContent.split("\n");
 
 		for (int i = 0; i < rows.length; i++) {
-			//System.out.println(rows[i]);
 			vectorToMethod(rows[i].split(";"));
-			//checkar
 		}
 	}
 
