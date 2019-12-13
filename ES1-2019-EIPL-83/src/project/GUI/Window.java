@@ -30,10 +30,10 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * This class is responsible for setting up the Graphical User Interface (GUI)
- * for each functionality of the application
  * 
  * @author ES1_2019_LEIPL_83
  */
+
 public class Window {
 	private JFrame frame;
 	private int loc = 80, cyclo = 10, atfd = 4; // DEFAULT VALUES
@@ -155,7 +155,7 @@ public class Window {
 	/**
 	 * Creates window to create new rules with user preferences
 	 */
-	
+
 	public void create_new_rules_user() {
 		frame.dispose();
 		JFrame jframe = new JFrame();
@@ -355,11 +355,13 @@ public class Window {
 		frame.pack();
 		frame.setVisible(true);
 	}
-/**
- * Window to show results
- * @param rule
- * @param type
- */
+
+	/**
+	 * Window to show results
+	 * 
+	 * @param rule
+	 * @param type
+	 */
 	private void displayResults(Rule rule, String type) {
 		frame = new JFrame("Results");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -415,62 +417,84 @@ public class Window {
 //	}
 	/**
 	 * getter method of the class Window that gives us the getLoc attribute
+	 * 
 	 * @return loc
 	 */
 	public int getLoc() {
 		return loc;
 	}
+
 	/**
 	 * getter method of the class Window that gives us the getCyclo attribute
+	 * 
 	 * @return cyclo
 	 */
 	public int getCyclo() {
 		return cyclo;
 	}
+
 	/**
-	 * setter method that replaces the value of the loc attribute of the Window object
+	 * setter method that replaces the value of the loc attribute of the Window
+	 * object
+	 * 
 	 * @param loc parameter to replace
 	 */
 	public void setLoc(int loc) {
 		this.loc = loc;
 	}
+
 	/**
-	 * setter method that replaces the value of the cyclo attribute of the Window object
+	 * setter method that replaces the value of the cyclo attribute of the Window
+	 * object
+	 * 
 	 * @param cyclo parameter to replace
 	 */
 	public void setCyclo(int cyclo) {
 		this.cyclo = cyclo;
 	}
+
 	/**
 	 * getter method of the class Window that gives us the getAtfd attribute
+	 * 
 	 * @return atfd
 	 */
 	public int getAtfd() {
 		return atfd;
 	}
+
 	/**
-	 * setter method that replaces the value of the atfd attribute of the Window object
+	 * setter method that replaces the value of the atfd attribute of the Window
+	 * object
+	 * 
 	 * @param atfd parameter to replace
 	 */
 	public void setAtfd(int atfd) {
 		this.atfd = atfd;
 	}
+
 	/**
 	 * getter method of the class Window that gives us the getLaa attribute
+	 * 
 	 * @return laa
 	 */
 	public double getLaa() {
 		return laa;
 	}
+
 	/**
-	 * setter method that replaces the value of the laa attribute of the Window object
+	 * setter method that replaces the value of the laa attribute of the Window
+	 * object
+	 * 
 	 * @param laa parameter to replace
 	 */
 	public void setLaa(double laa) {
 		this.laa = laa;
 	}
+
 	/**
-	 * getter method of the class Window that gives us the getSelectedMethod attribute
+	 * getter method of the class Window that gives us the getSelectedMethod
+	 * attribute
+	 * 
 	 * @return method or null
 	 */
 	public Method getSelectedMethod() {
@@ -479,7 +503,7 @@ public class Window {
 				return method;
 		return null;
 	}
-	
+
 	/**
 	 * Creates window to select which Tool will be evaluated
 	 */
@@ -519,7 +543,8 @@ public class Window {
 		frame.setVisible(true);
 	}
 
-	/** Method to return JTable to present IPlasma Indicators
+	/**
+	 * Method to return JTable to present IPlasma Indicators
 	 * 
 	 * @param selectedTool
 	 */

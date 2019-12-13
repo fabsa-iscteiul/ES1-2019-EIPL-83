@@ -1,51 +1,36 @@
 package tests;
 
 import java.io.File;
-import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
 import project.GUI.ReadExcel;
 
 class ReadExcelTest {
-	
+
 	ReadExcel reader;
 	String path = "Long-Method.xlsx";
 	File file = new File(path);
-	
-	
-	
-	public void SetUp () {
-	
+
+	public void SetUp() {
+
 		reader = new ReadExcel(path);
 	}
-	
+
 	@Test
 	public void Testread_excel() {
 		SetUp();
 		reader.readExel();
 	}
-	
 
-	
 	@Test
 	public void Test_vector_To_Method() {
 		SetUp();
-		String [] args = new String[] {"2", "stuff", "that", "method", "3", "4", "5", "3", "true", "true", "false", "false"};
-	    reader.vectorToMethod(args);
+		String[] args = new String[] { "2", "stuff", "that", "method", "3", "4", "5", "3", "true", "true", "false",
+				"false" };
+		reader.vectorToMethod(args);
 	}
-	
-	
 
-
-	
-	
-	
-	
-	
-
-	
-	
 //	@BeforeAll
 //	static void setUpBeforeClass() throws Exception {
 //
