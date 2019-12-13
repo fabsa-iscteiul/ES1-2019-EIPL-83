@@ -86,7 +86,7 @@ public class ReadExcel {
 	 * string array into a method object and sends it to arrayList (ReadExcel class
 	 * attribute)
 	 * 
-	 * @param excel content
+	 * @param excelContent
 	 */
 
 	public void auxiliar(String excelContent) {
@@ -128,8 +128,8 @@ public class ReadExcel {
 	}
 	
 	/**
-	 * setter method that replaces the value of the ArrayList<method> attribute of the ReadExcel object
-	 * @param ArrayList<Method> methods parameter to replace
+	 * setter method that replaces the value of the ArrayList(Method) attribute of the ReadExcel object
+	 * @param methods
 	 * 
 	 */
 	public void setMethods(ArrayList<Method> methods) {
