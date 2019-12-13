@@ -1,5 +1,6 @@
 package tests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -192,7 +193,7 @@ class MethodTest {
 
 	@Test
 	void testToString() {
-		String s = "[id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
+		String s = "id=" + id + ", methodName=" + methodName + ", LOC=" + LOC + ", CYCLO=" + CYCLO + ", ATFD=" + ATFD
 				+ ", LAA=" + LAA + ", is_long_method=" + is_long_method + ", iPlasma=" + iPlasma + ", PMD=" + PMD
 				+ ", is_feature_envy=" + is_feature_envy;
 		assertEquals(s, m.toString());
@@ -233,6 +234,11 @@ class MethodTest {
 		Rule r3 = new Rule("A", ">=", ">=", ">=", ">=", "OR", "OR");
 		Rule r4 = new Rule("A", ">", ">", ">", ">", "OR", "OR");
 		Rule r5 = new Rule("A", ">", ">", ">", ">", "OR", "OR");
+		Rule r6 = new Rule("A", "<", "<", "<", "<", "AND", "AND");
+		Rule r7 = new Rule("A", "<", "<", "<", "<", "AND", "AND");
+		Method m1 = new Method(2, "", "", "m2", 1, 2, 3, 1, false, false, false, false);
+		Method m2 = new Method(2, "", "", "m3", 2, 3, 2, 0, false, false, false, false);
+		
 		
 		r1.setAtfd(4);
 		r1.setCyclo(5);
@@ -254,12 +260,33 @@ class MethodTest {
 		r5.setCyclo(5);
 		r5.setLaa(5.0);
 		r5.setLoc(5);
+		r6.setCyclo(1);
+		r6.setAtfd(1);
+		r6.setLaa((1.0));
+		r6.setLoc(1);
+		r7.setCyclo(100);
+		r7.setAtfd(100);
+		r7.setLaa((100.0));
+		r7.setLoc(200);
+		
+		
 		m.calculate(r1, "Featury Envy");
 		m.calculate(r2, "Feature Envy");
 		m.calculate(r3, "Feature Envy");
 		m.calculate(r4, "Feature Envy");
 		m.calculate(r5, "Feature Envy");
+		m.calculate(r6, "Long Method");
+		m.calculate(r7, "Long Method");
+		m.calculate(r1, "Long Method");
+		m1.getCalculatedFeatureEnvy(r1);
+		m1.calculate(r1, "Feature Envy");
+		m2.getCalculatedLongMethod(r2);
+		m2.calculate(r2, "Long Method");
 		
+		assertEquals(false, m.defaultFeatureEnvy());
+		assertEquals(false, m.defaultLongMethod());
+		assertEquals("Calculated Feature Envy = false", m1.getCalculatedFeatureEnvy(r1));
+		assertEquals("Calculated Long Method = true", m2.getCalculatedLongMethod(r2));
 	}
 
 }

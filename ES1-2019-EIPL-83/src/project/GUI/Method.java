@@ -260,7 +260,7 @@ public class Method {
 	}
 
 	public void calculate(Rule rule, String method) {
-		if(method.equals("Feature envy")) // Se já tiver calculado tem que meter a false para voltar a calcular
+		if(method.equals("Feature Envy")) // Se já tiver calculado tem que meter a false para voltar a calcular
 			calculated_Feature_envy = false;
 		else if(method.equals("Long Method"))
 			calculated_long_method=false;
