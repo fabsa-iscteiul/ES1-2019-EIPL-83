@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,13 +11,17 @@ import project.GUI.Rule;
 
 class RuleTest {
 
-	Rule r1, r2, r3,r4;
+	Rule r1, r2, r3,r4, r5, r6, r7, r8;
 
 	public void setUp() {
 		r1 = new Rule("A", "<=", "<=", "<=", "<=", "OR", "OR");
 		r2 = new Rule("B", ">=", ">=", ">=", ">=", "OR", "AND");
 		r3 = new Rule("C", "<=", "<=", "<=", "<=", "AND", "OR");
-		r4 = new Rule("C", "4", "5", "9", "3", "e", "e");
+		r4 = new Rule("D", "<", "<", "<", "<", "AND", "OR");
+		r5 = new Rule("E", ">", ">", ">", ">", "OR", "AND");
+		r6 = new Rule("F", "", "<", "", "", "", "");
+		r7 = new Rule("G", "", ">", "", "", "", "");
+		r8 = new Rule("G", "1", "2", "3", "4", "5", "6");
 
 	}
 
@@ -86,4 +91,14 @@ class RuleTest {
 
 	}
 
+	@Test
+	public void TestRule() {
+		setUp();
+		
+		Rule r = new Rule("A", "<", ">", "<=", ">=", "AND", "OR");
+		
+		assertNotEquals(r, r1);
+		assertNotEquals(r, r2);
+		assertNotEquals(r, r3);
+	}
 }

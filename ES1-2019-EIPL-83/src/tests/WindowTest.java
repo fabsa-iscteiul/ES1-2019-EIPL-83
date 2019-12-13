@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import project.GUI.Method;
+import project.GUI.Rule;
 import project.GUI.Window;
 
 class WindowTest {
@@ -13,6 +14,8 @@ class WindowTest {
 
 	public void setUp() {
 		w = new Window();
+		Method m2 = new Method(2, "", "", "m3", 2, 3, 2, 0, false, false, false, false);
+		m2.getId();
 
 	}
 
@@ -94,6 +97,7 @@ class WindowTest {
 
 		Method m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma, PMD,
 				is_feature_envy);
+		
 		w.createFeatureEnvy();
 
 	}
@@ -101,23 +105,36 @@ class WindowTest {
 	@Test
 	public void TestCreateLongMethod() {
 		setUp();
-		int id = 4;
-		String inPackage = "project.GUI";
-		String inClass = "Method";
-		String methodName = "name";
-		int LOC = 5;
-		int CYCLO = 6;
-		int ATFD = 7;
-		float LAA = 8;
-		boolean is_long_method = true;
-		boolean is_feature_envy = false;
-		boolean iPlasma = true;
-		boolean PMD = true;
-		is_feature_envy = false;
 
-		Method m = new Method(id, inPackage, inClass, methodName, LOC, CYCLO, ATFD, LAA, is_long_method, iPlasma, PMD,
-				is_feature_envy);
 		w.createLongMethodWindow();
 
+	}
+	
+	@Test
+	public void testDisplayResults() {
+		setUp();
+		
+		Rule r = new Rule ("a","<","<","<","<","AND","OR");
+
+		w.displayResults(r,"Long Method");
+		w.displayResults(r, "Feature Envy");
+
+	}
+	
+	@Test
+	public void testGetToolList() {
+		setUp();
+		
+		w.getToolList();
+
+	}
+	
+	@Test
+	public void testGetLongMethodTable() {
+		setUp();
+
+		
+		w.getLongMethodTable("PMD");
+		w.getLongMethodTable("IPlasma");
 	}
 }

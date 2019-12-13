@@ -362,7 +362,7 @@ public class Window {
 	 * @param rule
 	 * @param type
 	 */
-	private void displayResults(Rule rule, String type) {
+	public void displayResults(Rule rule, String type) {
 		frame = new JFrame("Results");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
